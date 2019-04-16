@@ -36,22 +36,17 @@ const mapGenres = async function (genresIds) {
     return genresNames
 }
 
-const createPodcastDocument = async function (podcastObj) {
+const createPodcastDocument = async function (podName, episodeName, id, image,
+    audioLink, audioLength, genres, description, played, saved) {
+       
+    const genreNames = await mapGenres(genres)
 
-    const genres = await mapGenres(podcastObj.genres)
+    if(genreNames) {
+        genres = genreNames
+    }
 
-    const podcastDoc = new Podcast({
-        podName: podcastObj.podcast_title_original,
-        episodeName: podcastObj.title_original,
-        id: podcastObj.id,
-        image: podcastObj.image,
-        audioLink: podcastObj.audio,
-        audioLength: podcastObj.audio_length,
-        genres: genres,
-        description: podcastObj.description_original,
-        played: false,
-        saved: false
-    })
+    const podcastDoc = new Podcast({podName, episodeName, id, image, 
+        audioLink, audioLength, genres, description, played,saved})
 
     return podcastDoc
 }
@@ -74,13 +69,32 @@ router.get('/podcast/:podcastName', async function (req, res) {
         let podcastsRec = JSON.parse(body).results
 
         for (let i = 0; i < 6; i++) {
-            let podcast = await createPodcastDocument(podcastsRec[i])
+            let podcast = await createPodcastDocument(
+                podcastsRec[i].podcast_title_original, podcastsRec[i].title_original,
+                podcastsRec[i].id, podcastsRec[i].image, podcastsRec[i].audio,
+                podcastsRec[i].audio_length, podcastsRec[i].genres,
+                podcastsRec[i].description_original, false, false)
             podcasts.push(podcast)
         }
 
         res.send(podcasts)
     })
 })
+
+
+router.post(`/podcast`, async function(req, res) {
+    const podcast = req.body
+
+    const newPodcast = await createPodcastDocument(podcast.podName, podcast.episodeName,
+        podcast.id, podcast.image, podcast.audioLink, podcast.audioLength,
+        podcast.genres, podcast.description, podcast.saved, podcast.played)
+
+    let save = newPodcast.save()
+    save.then(res.send(`${newPodcast.podName} has been saved to database`))
+})
+
+
+
 
 
 

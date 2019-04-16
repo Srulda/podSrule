@@ -6,7 +6,8 @@ constructor(){
 
 async getPodData(podName){
     let getData = await $.get(`/podcast/${podName}`)
-    this.searchPodcast.push(getData)
+    console.log(getData)
+    this.searchPodcast = getData 
     
 }
 
@@ -20,18 +21,8 @@ async savePod(podName){
 
 }
 
-
-
-
 }
 
 
 
 
-saveCity(cityName) {
-    for (let city of this.cityData) {
-        if (city.name === cityName) {
-            $.post(`/city`, city, function (response) {})
-        }
-    }
-}

@@ -1,7 +1,9 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
+let podcastSchema = new Schema({
+    
+})
 
-
-const Somthing = mongoose.model("Somthing", someSchema)
-module.exports = Somthing
+const Podcast = mongoose.model("Podcast", podcastSchema)
+module.exports = Podcast

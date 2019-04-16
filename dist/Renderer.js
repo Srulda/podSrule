@@ -7,5 +7,4 @@ class Renderer {
         })
         $(".podcasts").empty().append(newHtml)
     }
-
 }

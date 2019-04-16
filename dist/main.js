@@ -2,10 +2,10 @@ const podManager = new PodManager()
 const audioManager = new AudioManager()
 const renderer = new Renderer()
 
-$(".search").on("click", async function () {
-    let input = $(".userInput").val()
-    await podManager.getPodData(input)
 
+$(".search").on("click",async function(){
+    let input = $(".userInput").val()
+   await podManager.getPodData(input)
     renderer.renderData(podManager.searchPodcast)
     console.log(podManager.searchPodcast)
 })

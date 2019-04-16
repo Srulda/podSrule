@@ -9,20 +9,16 @@ $(".search").on("click",async function(){
     console.log(podManager.searchPodcast)
 })
 
+
 $("body").on("click", ".fa-play",async function(){
-    
-
     let mp3 =  $(this).closest(".podcast").find(".episodeName").attr("data-id")
-    
-
-      if(!audioManager.src){
+    if(!audioManager.src){
         audioManager.changePodcast(mp3)
         audioManager.addSource(mp3)
         audioManager.playPodcast()
       }else{
         audioManager.playPodcast()
       }
-
 
 })
 
@@ -36,10 +32,12 @@ $("body").on("click", ".fa-play",async function(){
  })
 
  $("body").on("click", ".fa-stop", function(){
+
     let mp3 = $(this).closest(".podcast").find(".episodeName").attr("data-id")
     console.log(mp3)
     audioManager.stopPodcast()
 })
+
 
 
 $("body").on("click", ".save", function(){
@@ -51,4 +49,7 @@ $("body").on("click", ".remove", function(){
     let podId = $(this).closest(".podcast").find(".episodeName").attr("id")
     podManager.deletePod(podId)
     })
+
+
+
 

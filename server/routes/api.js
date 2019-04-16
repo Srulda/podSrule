@@ -21,7 +21,7 @@ const mapGenres = async function (genresIds) {
         }
     }
 
-    let resolve = await request(options, function (error, response, body) {
+    await request(options, function (error, response, body) {
         const genres = JSON.parse(body).genres
 
         for (let i in genresIds) {

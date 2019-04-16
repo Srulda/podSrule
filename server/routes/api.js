@@ -38,13 +38,11 @@ const mapGenres = async function (genresIds) {
 
 const createPodcastDocument = async function (podName, episodeName, id, image,
     audioLink, audioLength, genres, description, played, saved) {
-       
-    const genreNames = await mapGenres(genres)
-
-    if(genreNames) {
-        genres = genreNames
+    
+    if((typeof genres[0]) === 'number') {
+        genres = await mapGenres(genres)
     }
-
+    
     const podcastDoc = new Podcast({podName, episodeName, id, image, 
         audioLink, audioLength, genres, description, played,saved})
 

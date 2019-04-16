@@ -18,13 +18,11 @@
     <div class="podcast">
         <p class="PodName">{{PodName}} </p>
         <p class="description">{{description}} </p>
-        <p class="episodeName">{{episodeName}} </p>
+        <p class="episodeName" data-id="{{audio_link}}">{{episodeName}} </p>
         <img src="{{image}}">
-        <div>
-                <i class="fas fa-play"></i>
-                <i class="fas fa-pause"></i>
-                <i class="fas fa-stop"></i>
-        </div>
+        <div><i class ="fas fa-play"></i></div>        
+        <div><i class="fas fa-pause"></i></div>        
+        <div><i class="fas fa-stop"></i></div>        
 
     </div>
         {{/each}}

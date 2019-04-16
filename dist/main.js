@@ -12,12 +12,18 @@ $(".search").on("click",async function(){
 
 $("body").on("click", ".fa-play",async function(){
     let mp3 =  $(this).closest(".podcast").find(".episodeName").attr("data-id")
+    console.log(mp3)
+    console.log(audioManager.src)
     if(!audioManager.src){
         audioManager.changePodcast(mp3)
         audioManager.addSource(mp3)
         audioManager.playPodcast()
-      }else{
+      }
+      else{
         audioManager.playPodcast()
+        console.log("im here")
+        console.log(audioManager.src)
+
       }
 
 })

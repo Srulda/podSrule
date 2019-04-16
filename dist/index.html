@@ -4,11 +4,16 @@
 <head>
     <link rel="stylesheet" type="text/css" media="screen" href="style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
 </head>
 
 <body>
-    <input type="text" class="userInput">
-<button class="search">please</button>
+    <div id="nav">
+        <input type="text" class="userInput">
+        <a class="search waves-effect waves-light btn">Search</a>
+    </div>
+
 
 
     <div class="podcasts"></div>
@@ -19,11 +24,18 @@
     <div class="podcast">
         <p class="PodName">{{PodName}} </p>
         <p class="description">{{description}} </p>
-        <p class="episodeName" data-id="{{audioLink}}">{{episodeName}} </p>
+
+        <p class="episodeName" id="{{id}}" data-id="{{audioLink}}">{{episodeName}} </p>
+
         <img src="{{image}}">
         <div><i class ="fas fa-play"></i></div>        
         <div><i class="fas fa-pause"></i></div>        
-        <div><i class="fas fa-stop"></i></div>        
+        <div><i class="fas fa-stop"></i></div>  
+    <div>
+        <i class="save fas fa-heart"></i> 
+        <i class="remove far fa-heart"></i> 
+    </div>
+            
 
     </div>
         {{/each}}

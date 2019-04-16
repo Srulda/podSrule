@@ -1,9 +1,9 @@
 class PodManager {
     constructor() {
-        this.favoritesPlaylist = []
+        this.savedPodcast = []
+        this.listenedPodcast = []
         this.searchPodcast = []
     }
-
 
     async getPodData(podName) {
         let getData = await $.get(`/podcast/${podName}`)
@@ -11,25 +11,31 @@ class PodManager {
         this.searchPodcast = getData
     }
 
-
     async getDataFromDB() {
         let getDataDB = await $.get('/podcasts')
-        this.favoritesPlaylist = getDataDB
-    }
+        for(let pod of getDataDB){
+            if(pod.saved){
+                this.savedPodcast.push(pod)
+            }
+            if(pod.played){
+                this.listenedPodcast.push(pod)
+            }
+        }
+}
 
     async savePod(podID) {
-      for (let pod of this.searchPodcast) {
+        for (let pod of this.searchPodcast) {
             if (pod.id == podID) {
                 if (pod.played || pod.saved) {
                     return
                 } else {
-                   $.post(`/podcast`, pod, function(response){
-                      
+                    $.post(`/podcast`, pod, function (response) {
+
                     })
                 }
             }
         }
- }
+    }
 
     deletePod(podID) {
         console.log(podID)
@@ -39,4 +45,10 @@ class PodManager {
             success: function (response) {}
         })
     }
+
+
+
+
+
+
 }

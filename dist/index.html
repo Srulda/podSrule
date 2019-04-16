@@ -3,10 +3,32 @@
 
 <head>
     <link rel="stylesheet" type="text/css" media="screen" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
 </head>
 
 <body>
+<button class="search">please</button>
 
+
+    <div class="podcasts"></div>
+
+
+    <script id="podcasts-template" type="text/x-handlebars-template">
+        {{#each data}}
+    <div class="podcast">
+        <p class="PodName">{{PodName}} </p>
+        <p class="description">{{description}} </p>
+        <p class="episodeName">{{episodeName}} </p>
+        <img src="{{image}}">
+        <div>
+                <i class="fas fa-play"></i>
+                <i class="fas fa-pause"></i>
+                <i class="fas fa-stop"></i>
+        </div>
+
+    </div>
+        {{/each}}
+    </script>
 
 
 

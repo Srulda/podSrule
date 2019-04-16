@@ -1,3 +1,4 @@
+
 class Renderer {
 
     renderData(data) {
@@ -6,4 +7,3 @@ class Renderer {
         let newHtml = template({data})
         $(".podcasts").empty().append(newHtml)
     }
-}

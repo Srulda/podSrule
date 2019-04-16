@@ -16,13 +16,16 @@ async getDataFromDB() {
         this.favoritesPlaylist = getDataDB
     }
 
-async savePod(podName){
+async savePod(podID){
+   await $.post(`/podcast`, podID)
+   }
 
-
+deletePod(podID) {
+    $.ajax({
+        url: `/podcast/${podID}`,
+        method: "DELETE",
+        success: function (response) {}
+    })
 }
 
 }
-
-
-
-

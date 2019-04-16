@@ -8,7 +8,6 @@ async getPodData(podName){
     let getData = await $.get(`/podcast/${podName}`)
     console.log(getData)
     this.searchPodcast = getData 
-    
 }
 
 async getDataFromDB() {

@@ -1,10 +1,6 @@
 const podManager = new PodManager()
 const audioManager = new AudioManager()
-// const audioManager = new AudioManager()
 const renderer = new Renderer()
-
-
-// podManager.getPodData(podManager.podName)
 
 $(".search").on("click", function(){
     let input = $(".search").val()
@@ -25,3 +21,4 @@ $("body").on("click", ".fa-pause", function(){
     audioManager.playPodcast()
 
 })
+

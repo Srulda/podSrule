@@ -39,6 +39,7 @@ $("body").on("click", ".fa-play",async function(){
 $("body").on("click", ".save", function(){
 let podId = $(this).closest(".podcast").find(".episodeName").attr("id")
 podManager.savePod(podId)
+renderer.renderSaved(podManager.savedPodcast)
 })
     
 $("body").on("click", ".remove", function(){

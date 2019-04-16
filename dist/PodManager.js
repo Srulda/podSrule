@@ -23,13 +23,16 @@ class PodManager {
                 if (pod.played || pod.saved) {
                     return
                 } else {
-                    await $.post(`/podcast`, pod)
+                   $.post(`/podcast`, pod, function(response){
+                      
+                    })
                 }
             }
         }
  }
 
     deletePod(podID) {
+        console.log(podID)
         $.ajax({
             url: `/podcast/${podID}`,
             method: "DELETE",

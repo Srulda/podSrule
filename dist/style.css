@@ -2,14 +2,11 @@
     display: grid;
     grid-template-columns: 4fr 1fr 2fr;
     margin-top: 4vw;
+    margin-bottom: 2vw;
     height: 4.5vh;
 
 }
 
 .userInput{
 margin-right: 2vh;
-}
-
-.search{
-
 }

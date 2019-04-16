@@ -3,10 +3,9 @@ const path = require('path')
 const app = express()
 const bodyParser = require('body-parser')
 const api = require('./server/routes/api')
-// Mongoose setup
 const mongoose = require('mongoose')
 mongoose.connect('mongodb://localhost/peopleDB', { useNewUrlParser: true })
-// <------------------------>
+
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))

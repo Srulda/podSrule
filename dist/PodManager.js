@@ -12,23 +12,27 @@ class PodManager {
 
     async getDataFromDB() {
         let getDataDB = await $.get('/podcasts')
-        for(let pod of getDataDB){
-            if(pod.saved){
+        for (let pod of getDataDB) {
+            if (pod.saved) {
                 this.savedPodcast.push(pod)
             }
-            if(pod.played){
+            if (pod.played) {
                 this.listenedPodcast.push(pod)
             }
         }
-}
+    }
 
     async savePod(podID) {
         for (let pod of this.searchPodcast) {
             if (pod.id == podID) {
-                if (pod.played || pod.saved) {
+                if (pod.saved) {
                     return
+                } else if (pod.played) {
+                    pod.saved = true
+                    this.savedPodcast.push(pod)
                 } else {
-
+                    pod.saved = true
+                    this.savedPodcast.push(pod)
                     $.ajax({
                         url: `/podcast`,
                         method: "POST",
@@ -41,17 +45,17 @@ class PodManager {
         }
     }
 
-    deletePod(podID) {
-              $.ajax({
-            url: `/podcast/${podID}`,
-            method: "DELETE",
-            success: function (response) {}
-        })
-    }
 
-
-
-
+deletePod(podID) {
+    $.ajax({
+        url: `/podcast/${podID}`,
+        method: "DELETE",
+        success: function (response) {}
+    })
+}
 
 
 }
+
+
+

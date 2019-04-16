@@ -3,7 +3,7 @@ const audioManager = new AudioManager()
 const renderer = new Renderer()
 
 $(".search").on("click", function(){
-    let input = $(".search").val()
+    let input = $(".userInput").val()
     podManager.getPodData(input)
     renderer.renderData(podManager.searchPodcast)
 })

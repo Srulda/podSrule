@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 let podcastSchema = new Schema({
-    PodName: String,
+    podName: String,
     episodeName: String,
     id: String,
     image: String,

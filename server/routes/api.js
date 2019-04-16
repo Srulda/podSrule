@@ -12,7 +12,7 @@ router.get('/sanity', function (req, res) {
 const createPodcastDocument = function (podcastObj) {
 
     const podcastDoc = new Podcast({
-        PodName: podcastObj.podcast_title_original,
+        podName: podcastObj.podcast_title_original,
         episodeName: podcastObj.title_original,
         id: podcastObj.id,
         image: podcastObj.image,

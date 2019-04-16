@@ -2,13 +2,13 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 let podcastSchema = new Schema({
-    PodName: String,
+    podName: String,
     episodeName: String,
     id: String,
     image: String,
-    audio_link: String,
-    audio_length: Number,
-    genres : [Number],
+    audioLink: String,
+    audioLength: Number,
+    genres : [String],
     description: String,
     played: Boolean,
     saved: Boolean

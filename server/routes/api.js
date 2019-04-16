@@ -50,6 +50,8 @@ const createPodcastDocument = async function (podName, episodeName, id, image,
 }
 
 
+
+
 router.get('/podcast/:podcastName', async function (req, res) {
 
     const podName = req.params.podcastName
@@ -92,7 +94,14 @@ router.post(`/podcast`, async function(req, res) {
 })
 
 
+router.delete(`/podcast/:podcastID`, function(req, res) {
+    let id = req.params.podcastID
 
+    Podcast.deleteOne({ id: id }, function(error, response) {
+        console.log(response)
+        res.send(`Deleted podcast with id of ${id} from database.`)
+    })
+})
 
 
 

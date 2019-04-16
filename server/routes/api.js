@@ -114,6 +114,12 @@ router.delete(`/podcast/:podcastID`, function (req, res) {
     })
 })
 
+router.get('/podcasts', function(req, res) {
+    Podcast.find({}, function(err, podcasts) {
+        res.send(podcasts)
+    })
+})
+
 
 
 

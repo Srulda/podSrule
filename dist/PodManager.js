@@ -24,6 +24,5 @@ async savePod(podName){
 }
 
 
-const podManager = new  PodManager()
 
-podManager.getPodData(podManager.podName)
+

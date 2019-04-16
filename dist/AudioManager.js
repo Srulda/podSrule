@@ -1,17 +1,23 @@
 class AudioManager {
-    constructor(link) {
+    constructor(link, src) {
 
+        this.src = src
         this.audio = new Audio(link)
     }
     playPodcast() {
         this.audio.play()
 
     }
+
+    addSource(mp3Link){
+        this.src = mp3Link
+    }
     pausePodcast() {
         this.audio.pause()
     }
     stopPodcast() {
-        this.audio.stop()
+        this.audio.pause()
+        this.audio.currentTime = 0;
     }
 
     changePodcast(mp3Link) {

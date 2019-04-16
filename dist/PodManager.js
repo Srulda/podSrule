@@ -4,11 +4,13 @@ class PodManager {
         this.searchPodcast = []
     }
 
+
     async getPodData(podName) {
         let getData = await $.get(`/podcast/${podName}`)
         console.log(getData)
         this.searchPodcast = getData
     }
+
 
     async getDataFromDB() {
         let getDataDB = await $.get('/podcasts')
@@ -16,7 +18,7 @@ class PodManager {
     }
 
     async savePod(podID) {
-        for (let pod of this.searchPodcast) {
+      for (let pod of this.searchPodcast) {
             if (pod.id == podID) {
                 if (pod.played || pod.saved) {
                     return
@@ -25,7 +27,7 @@ class PodManager {
                 }
             }
         }
-    }
+ }
 
     deletePod(podID) {
         $.ajax({

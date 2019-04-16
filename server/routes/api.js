@@ -38,13 +38,12 @@ router.get('/podcast/:podcastName', function (req, res) {
             let podcastsRec = response.body.results
             let podcasts = []
 
-            for(let i = 0; i < 6; i++) {
+            for (let i = 0; i < 6; i++) {
                 podcasts.push(createPodcastDocument(podcastsRec[i]))
             }
-            
+
             res.send(podcasts)
         })
-
 })
 
 

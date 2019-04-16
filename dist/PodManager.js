@@ -16,27 +16,16 @@ async getDataFromDB() {
         this.favoritesPlaylist = getDataDB
     }
 
-async savePod(podName){
+async savePod(podID){
+   await $.post(`/podcast`, podID)
+   }
 
-
-}
-
-}
-
-
-
-saveCity(cityName) {
-    for (let city of this.cityData) {
-        if (city.name === cityName) {
-            $.post(`/city`, city, function (response) {})
-        }
-    }
-}
-
-removeCity(cityName) {
+deletePod(podID) {
     $.ajax({
-        url: `/city/${cityName}`,
+        url: `/podcast/${podID}`,
         method: "DELETE",
         success: function (response) {}
     })
+}
+
 }

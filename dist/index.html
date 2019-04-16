@@ -18,6 +18,10 @@
 
     <div class="podcasts"></div>
 
+    <div id="sidebar">
+        
+    </div>
+
 
     <script id="podcasts-template" type="text/x-handlebars-template">
         {{#each data}}
@@ -41,6 +45,21 @@
         {{/each}}
     </script>
 
+    <script id="saved-podcasts-template" type="text/x-handlebars-template">
+
+        {{#each podcasts}}
+        <div class="podcast-sidebar">
+            <img src="{{image}}">
+            <p class="episodeName" id="{{id}}" data-id="{{audioLink}}">{{episodeName}}</p>
+            <p class="length">{{audioLength}}</p>
+            <div><i class ="fas fa-play"></i></div>        
+            <div><i class="fas fa-pause"></i></div>        
+            <div><i class="fas fa-stop"></i></div>  
+            <i class="remove far fa-heart"></i> 
+        </div>
+        {{/each}}
+
+    </script>
 
 
 

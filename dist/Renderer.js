@@ -1,4 +1,13 @@
 class Renderer {
+
+    renderSaved(podcasts) {
+        let source = $("#saved-podcasts-template").html()
+        let template = Handlebars.compile(source)
+        let newHTML = template({ podcasts })
+        
+        $("#sidebar").empty().append(newHTML)
+    }
+
     renderData(data) {
         let source = $("#podcasts-template").html()
         let template = Handlebars.compile(source)

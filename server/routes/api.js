@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const unirest = require('unirest')
 const APIKey = require('../../config')
+const request = require('request-promise-native')
 
 const Podcast = require('../models/Podcast')
 
@@ -9,29 +10,35 @@ router.get('/sanity', function (req, res) {
     res.send('OK!')
 })
 
-const mapGenres = function (genresIds) {
+const mapGenres = async function (genresIds) {
 
-    unirest.get(`https://listen-api.listennotes.com/api/v2/genres`)
-        .header('X-ListenAPI-Key', APIKey).end(function (response) {
-            const genres = response.body.genres
-            const genresNames = []
+    const genresNames = []
 
-            for(let i in genresIds) {
-                for(let j in genres){
-                    if(genresIds[i] === genres[j].id){
-                        genresNames.push(genres[j].name)
-                    }
-                } 
+    let options = {
+        uri: `https://listen-api.listennotes.com/api/v2/genres`,
+        headers: {
+            'X-ListenAPI-Key': APIKey
+        }
+    }
+
+    let resolve = await request(options, function (error, response, body) {
+        const genres = JSON.parse(body).genres
+
+        for (let i in genresIds) {
+            for (let j in genres) {
+                if (genresIds[i] === genres[j].id) {
+                    genresNames.push(genres[j].name)
+                }
             }
+        }
+    })
 
-            return genresNames
-        })
-
+    return genresNames
 }
 
-const createPodcastDocument = function (podcastObj) {
+const createPodcastDocument = async function (podcastObj) {
 
-    const genres = mapGenres(podcastObj.genres)
+    const genres = await mapGenres(podcastObj.genres)
 
     const podcastDoc = new Podcast({
         podName: podcastObj.podcast_title_original,
@@ -50,12 +57,58 @@ const createPodcastDocument = function (podcastObj) {
 }
 
 
-router.get('/podcast/:podcastName', function (req, res) {
+router.get('/podcast/:podcastName', async function (req, res) {
 
     const podName = req.params.podcastName
 
-    unirest.get(`https://listen-api.listennotes.com/api/v2/search?q=${podName}`)
+    let podcasts = []
+
+    let options = {
+        uri: `https://listen-api.listennotes.com/api/v2/search?q=${podName}`,
+        headers: {
+            'X-ListenAPI-Key': APIKey
+        }
+    }
+
+    await request(options, async function (error, response, body) {
+        let podcastsRec = JSON.parse(body).results
+
+        for (let i = 0; i < 6; i++) {
+            let podcast = await createPodcastDocument(podcastsRec[i])
+            podcasts.push(podcast)
+        }
+
+        res.send(podcasts)
+    })
+})
+
+
+
+
+
+module.exports = router
+
+
+/* let a =  unirest.get(`https://listen-api.listennotes.com/api/v2/genres`)
         .header('X-ListenAPI-Key', APIKey).end(function (response) {
+            const genres = response.body.genres
+
+            for (let i in genresIds) {
+                for (let j in genres) {
+                    if (genresIds[i] === genres[j].id) {
+                        genresNames.push(genres[j].name)
+                    }
+                }
+            }
+
+            console.log(genresNames)
+        })
+
+        console.log("hi") */
+
+
+        /* unirest.get(`https://listen-api.listennotes.com/api/v2/search?q=${podName}`)
+        .header('X-ListenAPI-Key', APIKey).end(async function (response) {
 
             let podcastsRec = response.body.results
             let podcasts = []
@@ -64,12 +117,5 @@ router.get('/podcast/:podcastName', function (req, res) {
                 podcasts.push(createPodcastDocument(podcastsRec[i]))
             }
 
-            res.send(podcasts)
-        })
-})
-
-
-
-
-
-module.exports = router
+            await res.send(podcasts)
+        }) */

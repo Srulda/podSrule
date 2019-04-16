@@ -25,4 +25,18 @@ async savePod(podName){
 
 
 
+saveCity(cityName) {
+    for (let city of this.cityData) {
+        if (city.name === cityName) {
+            $.post(`/city`, city, function (response) {})
+        }
+    }
+}
 
+removeCity(cityName) {
+    $.ajax({
+        url: `/city/${cityName}`,
+        method: "DELETE",
+        success: function (response) {}
+    })
+}

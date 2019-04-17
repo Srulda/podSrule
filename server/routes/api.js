@@ -83,7 +83,7 @@ router.get('/podcast/:podcastName', async function (req, res) {
                 podcastsRec[i].podcast_title_original, podcastsRec[i].title_original,
                 podcastsRec[i].id, podcastsRec[i].image, podcastsRec[i].audio,
                 podcastsRec[i].audio_length, podcastsRec[i].genres,
-                podcastsRec[i].description_original, false, false)
+                podcastsRec[i].description_original.substr(0, 200), false, false)
             podcasts.push(podcast)
         }
 

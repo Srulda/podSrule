@@ -168,9 +168,11 @@
          
 
     <script id="genre-discovery-template" type="text/x-handlebars-template">
+        <div class="genres-container">
         <p class="how-much-time">Pick a Genre?</p>
-            <hr class="hr-line">
+                <hr class="hr-line">
         <div class="genres">
+                
             {{#each genres}}
             <div class="genre" data-id="{{genreId}}" data-name="{{genre}}"> 
                 <i class="{{i}} genre-icon"></i>
@@ -178,9 +180,10 @@
             </div>
                
             
-            
+      
             {{/each}}
         </div>
+    </div>
     
     </script>
 

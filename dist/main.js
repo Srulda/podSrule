@@ -21,41 +21,41 @@ $(".search").on("click", async function () {
 
 
 $("body").on("click", ".fa-play", async function () {
-    let mp3 = $(this).closest(".podcast").find(".episodeName").attr("data-id")
-    console.log(mp3)
-    console.log(audioManager.src)
-    if (!audioManager.src) {
-        audioManager.changePodcast(mp3)
-        audioManager.addSource(mp3)
-        audioManager.playPodcast()
-    } else {
-        audioManager.playPodcast()
-        console.log("im here")
-        console.log(audioManager.src)
+    let id = $(this).closest(".podcast").find(".episodeName").attr("id")
+    let pod = podManager.getCorrectPod(id)    
+    pod.audioManager.audio.play()
 
-    }
+    
 
+    $(this).closest(".card").addClass("bounce-top")
 })
 
 $("body").on("click", ".fa-pause", function () {
-    let mp3 = $(this).closest(".podcast").find(".episodeName").attr("data-id")
-    audioManager.pausePodcast()
+    let id = $(this).closest(".podcast").find(".episodeName").attr("id")
+    let pod = podManager.getCorrectPod(id)
+    pod.audioManager.audio.pause()
 
 
 })
 
 $("body").on("click", ".fa-stop", function () {
+    let id = $(this).closest(".podcast").find(".episodeName").attr("id")
+    let pod = podManager.getCorrectPod(id)
+    pod.audioManager.audio.pause()
+    pod.audioManager.audio.currentTime = 0;
 
-    let mp3 = $(this).closest(".podcast").find(".episodeName").attr("data-id")
-    audioManager.stopPodcast()
 })
 
 $("body").on("click", ".fa-forward", function () {
-    audioManager.plus()
+    let id = $(this).closest(".podcast").find(".episodeName").attr("id")
+    let pod = podManager.getCorrectPod(id)
+    pod.audioManager.audio.currentTime +=30
 })
 
 $("body").on("click", ".fa-backward", function () {
-    audioManager.minus()
+    let id = $(this).closest(".podcast").find(".episodeName").attr("id")
+    let pod = podManager.getCorrectPod(id)
+    pod.audioManager.audio.currentTime -=30
 })
 
 $("body").on("click", ".save", function () {
@@ -79,21 +79,26 @@ $("body").on("click", ".time", function () {
     discoveryManager.time = time
     console.log(discoveryManager._time)
     renderer.renderLang(discoveryManager._langArray)
+    $(".time").closest("#discovery-time-container").fadeOut()
+
 })
 
 $("body").on("click", ".language", function () {
     let lang = $(this).data().id
     discoveryManager.lang = lang
     renderer.renderGenres(discoveryManager._genreIdAndName)
+    $(this).closest(".flags-container").fadeOut()
 })
 
-$("body").on("click", ".genre", async function () {
+$("body").on("click", ".genres", async function () {
     let genre = $(this).attr("data-name")
     let genreID = $(this).attr("data-id")
     discoveryManager.genre = genre
     discoveryManager.genreId = genreID
+    $(this).closest(".genres-container").fadeOut()
 
     await discoveryManager.discoverPodcasts()
+
     renderer.renderDiscovered(discoveryManager.discoveredPodcasts)
     $('.carousel').carousel()
 

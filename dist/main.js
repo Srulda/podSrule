@@ -5,7 +5,11 @@ const discoveryManager = new DiscoveryManager()
 
 $(document).ready(function () {
     $('.tabs').tabs()
+
+
+
     $('.sidenav').sidenav({edge: 'right'})
+
 })
 
 
@@ -95,12 +99,15 @@ $("body").on("click", ".genres", async function () {
     let genreID = $(this).attr("data-id")
     discoveryManager.genre = genre
     discoveryManager.genreId = genreID
-    $(this).closest(".genres-container").fadeOut()
 
+    $(".loader").css("display", "block")
     await discoveryManager.discoverPodcasts()
-
+    $(".loader").css("display", "none")
+    $(this).closest(".genres-container").fadeOut()
+    await discoveryManager.discoverPodcasts()
     renderer.renderDiscovered(discoveryManager.discoveredPodcasts)
     $('.carousel').carousel()
+
 
 })
 

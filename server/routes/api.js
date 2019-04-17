@@ -132,9 +132,9 @@ router.get('/discover/:maxLength/:language/:genreName/:genreID', async function 
     let discoPodcasts = []
     let discoUrl
     if (maxLength === 90) {
-        discoUrl = `https://listen-api.listennotes.com/api/v2/search?q=${genreName}&sort_by_date=0&${language}&len_min${maxLength}&genre_ids=${genreID}&safe_mode=1`
+        discoUrl = `https://listen-api.listennotes.com/api/v2/search?q=${genreName}&sort_by_date=0&language=${language}&len_min${maxLength}&genre_ids=${genreID}&safe_mode=1`
     } else {
-        discoUrl = `https://listen-api.listennotes.com/api/v2/search?q=${genreName}&sort_by_date=0&${language}&len_max${maxLength}&genre_ids=${genreID}&safe_mode=1`
+        discoUrl = `https://listen-api.listennotes.com/api/v2/search?q=${genreName}&sort_by_date=0&language=${language}&len_max${maxLength}&genre_ids=${genreID}&safe_mode=1`
     }
     let discover = {
         uri: discoUrl,

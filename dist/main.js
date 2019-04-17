@@ -16,9 +16,12 @@ $(document).ready(function () {
 const handleSearch = async function (podcastInput) {
     await podManager.getPodData(podcastInput)
     renderer.renderData(podManager.searchPodcast)
+    $(".loader").css("display", "none")
+
 }
 
 $(".search").on("click", async function () {
+    $(".loader").css("display", "block")
     handleSearch($(".userInput").val())
     $(".userInput").val("")
 })
@@ -79,7 +82,6 @@ $("body").on("click", ".remove", function () {
 
 $("body").on("click", ".time", function () {
     let time = $(this).data().id
-    console.log(time)
     discoveryManager.time = time
     console.log(discoveryManager._time)
     renderer.renderLang(discoveryManager._langArray)
@@ -99,11 +101,10 @@ $("body").on("click", ".genres", async function () {
     let genreID = $(this).attr("data-id")
     discoveryManager.genre = genre
     discoveryManager.genreId = genreID
-
+    $(this).closest(".genres-container").fadeOut()
     $(".loader").css("display", "block")
     await discoveryManager.discoverPodcasts()
     $(".loader").css("display", "none")
-    $(this).closest(".genres-container").fadeOut()
     await discoveryManager.discoverPodcasts()
     renderer.renderDiscovered(discoveryManager.discoveredPodcasts)
     $('.carousel').carousel()

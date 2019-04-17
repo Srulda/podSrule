@@ -37,22 +37,27 @@
             </div>
         </li>
     </ul>
-    <a href="#" data-target="slide-out" class="btn-floating btn-large waves-effect waves-light red sidenav-trigger"><i
-            class="material-icons">keyboard_arrow_left</i></a>
+    <a href="#" data-target="slide-out" class=" btn-floating btn-large waves-effect waves-light red sidenav-trigger"><i
+            id="leftArrow" class="material-icons">keyboard_arrow_left</i></a>
 
 
     <div class="nav-wraper">
         <div class="container" >
         <div class="row">
             <input type="text" class="userInput s6" placeholder="What are you looking for?">
-            <button class="search">
+            <!-- <button class="search">
                 <i class="fa fa-search"></i>
-            </button>
+            </button> -->
         </div>
     </div>
     </div>
 
-
+    <div class="first-loader">
+            <div class="bar">
+                <div class="circle-carousel"></div>
+                <p id="fatMan">Headphons On</p>
+            </div>
+        </div>
 
 
     <div class="podcasts"></div>
@@ -157,16 +162,15 @@
             <div class="circle-carousel"></div>
             <p id="fatMan">Headphons On</p>
         </div>
-
     </div>
 
 
 
-
-    <div class="carousel"></div>
+<div class="carousel-container"> </div>
 
 
     <script id="discover-podcasts-template" type="text/x-handlebars-template">
+        <div class="carousel">
         {{#each podcasts}}
         <div class="podcast">
             <p class="episodeName" class="{{id}}" id="{{audioLink}}"></p>
@@ -175,9 +179,10 @@
                 <i class ="fas fa-play"></i>
             </a>
          
-        {{/each}}
         </div>
-      
+        {{/each}}
+
+    </div>
 
    
     </script>
@@ -185,7 +190,7 @@
     <script id="genre-discovery-template" type="text/x-handlebars-template">
         <div class="genres-container">
 
-        <p class="how-much-time">Pick a Genre?</p>
+        <p class="how-much-time">PICK A GENRE</p>
                 <hr class="hr-line">
         <div class="genres">
                 
@@ -204,7 +209,7 @@
     </script>
 
     <script id="language-discovery-template" type="text/x-handlebars-template">
-        <p class="how-much-time">Pick a language?</p>
+        <p class="how-much-time">PICK A LANGUAGE</p>
             <hr class="hr-line">
         <div class="languages">
             {{#each languages}}

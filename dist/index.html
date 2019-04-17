@@ -105,9 +105,9 @@
                         <div class="card-content">
                           <p class="description">{{description}}<b> read More>></b></p>
                           <div class="btns"> 
-                                <i class="fas fa-play"></i>
-                                <i class="fas fa-pause"></i>        
-                                <i class="fas fa-stop"></i> 
+                                <i class="fas fa-play player-play"></i>
+                                <i class="fas fa-pause player-pause"></i>        
+                                <i class="fas fa-stop player-stop"></i> 
                                 <i class="fas fa-backward"></i>
                                 <i class="fas fa-forward"></i>
                             </div>
@@ -130,14 +130,15 @@
                     <div class="saved-pod-card card-content white-text podcast">
                         <div><img class="circle col s12" src="{{image}}"></div>
                         <div class="col s12">
+                            
                             <span class="card-title episodeName" id="{{id}}" data-id="{{audioLink}}">{{episodeName}}</span>
                             <p class="length">{{audioLength}}</p>
                         </div>
                     </div>
                     <div class="card-action">
-                      <a><i class ="fas fa-play"></i></a>
-                      <a><i class="fas fa-pause"></i></a>
-                      <a><i class="fas fa-stop"></i></i></a>
+                      <a><i class ="fas fa-play save-play"></i></a>
+                      <a><i class="fas fa-pause save-pause"></i></a>
+                      <a><i class="fas fa-stop save-stop"></i></i></a>
                       <a><i class="remove far fa-heart"></i></a>
                     </div>
                   </div>
@@ -164,10 +165,10 @@
     <script id="discover-podcasts-template" type="text/x-handlebars-template">
         {{#each podcasts}}
         <div class="podcast">
-            <p class="episodeName" class="{{id}}" id="{{audioLink}}"></p>
+            <p class="episodeName" id="{{id}}" data-id="{{audioLink}}"></p>
             <a class="carousel-item"><img class = "car-img" src="{{image}}" >
-                <i class="fas fa-stop"></i>
-                <i class ="fas fa-play"></i>
+                <i class="fas fa-stop carusela-stop"></i>
+                <i class ="fas fa-play carusela-play"></i>
             </a>
          
         {{/each}}

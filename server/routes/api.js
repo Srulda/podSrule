@@ -123,7 +123,7 @@ router.get('/podcasts', function (req, res) {
 
 
 
-router.get('/discover/:maxLength/language/genreName/genreID', async function (req, res) {
+router.get('/discover/:maxLength/:language/:genreName/:genreID', async function (req, res) {
 
     let genreName = req.params.genreName
     let maxLength = req.params.maxLength
@@ -147,13 +147,12 @@ router.get('/discover/:maxLength/language/genreName/genreID', async function (re
 
         for (let i = 0; i < 6; i++) {
             let podcast = await createPodcastDocument(
-                discoPodcastRec[i].podcast_title_original, podcastsRec[i].title_original,
-                discoPodcastRec[i].id, podcastsRec[i].image, podcastsRec[i].audio,
-                discoPodcastRec[i].audio_length, podcastsRec[i].genres,
+                discoPodcastRec[i].podcast_title_original, discoPodcastRec[i].title_original,
+                discoPodcastRec[i].id, discoPodcastRec[i].image, discoPodcastRec[i].audio,
+                discoPodcastRec[i].audio_length, discoPodcastRec[i].genres,
                 discoPodcastRec[i].description_original, false, false)
             discoPodcasts.push(podcast)
         }
-
         res.send(discoPodcasts)
     })
 })

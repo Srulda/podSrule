@@ -21,8 +21,28 @@ class PodManager {
             }
         }
     }
+
+    getCorrectSavedPod(id){
+        for(let pod of this.savedPodcast){
+            if(id == pod.id){
+                return pod
+            }
+        }
+    }
+
+    getCorrectListendPod(id){
+        for(let pod of this.listenedPodcast){
+            if(id == pod.id){
+                return pod
+            }
+        }  
+    }
     async getDataFromDB() {
         let getDataDB = await $.get('/podcasts')
+        for(let pod of getDataDB){
+            pod.audioManager = new AudioManager(pod.audioLink, pod.audioLink)
+        }
+
         for (let pod of getDataDB) {
             console.log(pod)
             if (pod.saved) {

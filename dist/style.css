@@ -356,3 +356,10 @@ height: 140%;
   }
 }
 
+img{
+  cursor: pointer;
+}
+
+i{
+  cursor: pointer;
+}

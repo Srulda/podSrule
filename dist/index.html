@@ -19,6 +19,7 @@
 
 <body>
 
+
     <div class="wrap">
         <div class="nav">
             <input type="text" class="userInput" placeholder="What are you looking for?">
@@ -27,6 +28,8 @@
             </button>
         </div>
     </div>
+
+
 
 
     <div class="podcasts"></div>
@@ -132,22 +135,35 @@
 
         {{/each}}
     </script>
+      
+    <div class="carousel"></div> 
 
     <script id="discover-podcasts-template" type="text/x-handlebars-template">
         {{#each podcasts}}
         <div class="podcast">
-            <img src="{{image}}">
-            <p class="episodeName" id="{{id}}" data-id="{{audioLink}}">{{episodeName}}</p>
-            <p class="length">{{audioLength}}</p>
-            <div><i class ="fas fa-play"></i></div>        
-            <div><i class="fas fa-pause"></i></div>        
-            <div><i class="fas fa-stop"></i></div>  
-            <i class="remove far fa-heart"></i> 
-        </div>
+            <a class="carousel-item" href="#one!"><img src="{{image}}" style=width:100%"></a>
+         
         {{/each}}
+        </div>
+      
 
-        <div id="start-over-button">Start Over</div>
+   
     </script>
+    
+    <!-- <p class="episodeName" id="{{id}}" data-id="{{audioLink}}">{{episodeName}}</p>
+    <p class="length">{{audioLength}}</p>
+    <i class ="fas fa-play"></i>       
+    <i class="fas fa-pause"></i>        
+    <i class="fas fa-stop"></i>
+    <i class="remove far fa-heart"></i>      
+             -->
+           
+          
+    
+
+
+
+         
 
     <script id="genre-discovery-template" type="text/x-handlebars-template">
         <p class="how-much-time">Pick a Genre?</p>

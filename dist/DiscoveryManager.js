@@ -4,6 +4,7 @@ class DiscoveryManager {
         this._lang
         this._genre
         this._genreId
+
         this._langArray = [
             {language:"Hebrew", pic: "https://upload.wikimedia.org/wikipedia/en/thumb/c/c3/Flag_of_France.svg/1200px-Flag_of_France.svg.png"},
             {language: "English", pic: "https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/1200px-Flag_of_the_United_States.svg.png"},
@@ -11,6 +12,8 @@ class DiscoveryManager {
             {language: "German", pic: "https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Flag_of_Germany.svg/1200px-Flag_of_Germany.svg.png"},
             {language: "Italian", pic: "https://upload.wikimedia.org/wikipedia/en/thumb/0/03/Flag_of_Italy.svg/1200px-Flag_of_Italy.svg.png"}
                             ]
+
+
         this._genreIdAndName = [
             {genre: "sports", genreId: 77, i: `far fa-futbol`},
             {genre: "technology", genreId: 127, i:`fas fa-laptop-code`},

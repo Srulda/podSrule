@@ -85,7 +85,7 @@ $("body").on("click", ".language", function () {
     renderer.renderGenres(discoveryManager._genreIdAndName)
 })
 
-$("body").on("click", ".genre", async function () {
+$("body").on("click", ".genres", async function () {
     let genre = $(this).attr("data-name")
     let genreID = $(this).attr("data-id")
     discoveryManager.genre = genre

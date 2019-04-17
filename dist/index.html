@@ -23,6 +23,13 @@
     </div>
 
 
+    <div id="discovery-container">
+
+
+
+    </div>
+
+
     <script id="podcasts-template" type="text/x-handlebars-template">
         {{#each data}}
     <div class="podcast">
@@ -59,6 +66,20 @@
         </div>
         {{/each}}
 
+    </script>
+
+    <script id="discover-podcasts-template" type="text/x-handlebars-template">
+        {{#each podcasts}}
+        <div class="discovered-podcast">
+            <img src="{{image}}">
+            <p class="episodeName" id="{{id}}" data-id="{{audioLink}}">{{episodeName}}</p>
+            <p class="length">{{audioLength}}</p>
+            <div><i class ="fas fa-play"></i></div>        
+            <div><i class="fas fa-pause"></i></div>        
+            <div><i class="fas fa-stop"></i></div>  
+            <i class="remove far fa-heart"></i> 
+        </div>
+        {{/each}}
     </script>
 
 

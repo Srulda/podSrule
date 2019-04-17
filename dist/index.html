@@ -24,6 +24,35 @@
 
     <div id="sidebar">
 
+
+    </div>
+
+
+    <div id="discovery-container">
+
+        <div id="discovery-time-container">
+            <p>How much time do you have?</p>
+            <div id="times">
+                <div class="time" data-id="15">
+                    <img src="https://www.kan.org.il/images/ic_timing_15.svg">
+                    <p>15 m'</p>
+                </div>
+                <div class="time" data-id="30">
+                    <img src="https://www.kan.org.il/images/ic_timing_30.svg">
+                    <p>30 m'</p>
+                </div>
+                <div class="time" data-id="60">
+                    <img src="https://www.kan.org.il/images/ic_timing_45.svg">
+                    <p>60 m'</p>
+                </div>
+                <div class="time" data-id="90">
+                    <img src="https://www.kan.org.il/images/ic_timing_100.svg">
+                    <p>More than 60 m'</p>
+                </div>
+            </div>
+        </div>
+
+
     </div>
 
 
@@ -74,12 +103,27 @@
 
     </script>
 
+    <script id="discover-podcasts-template" type="text/x-handlebars-template">
+        {{#each podcasts}}
+        <div class="discovered-podcast">
+            <img src="{{image}}">
+            <p class="episodeName" id="{{id}}" data-id="{{audioLink}}">{{episodeName}}</p>
+            <p class="length">{{audioLength}}</p>
+            <div><i class ="fas fa-play"></i></div>        
+            <div><i class="fas fa-pause"></i></div>        
+            <div><i class="fas fa-stop"></i></div>  
+            <i class="remove far fa-heart"></i> 
+        </div>
+        {{/each}}
+    </script>
+
 
 
     <script src="./jquery/dist/jquery.js"></script>
     <script src="./handlebars/dist/handlebars.js"></script>
     <script src="Renderer.js"></script>
     <script src="PodManager.js"></script>
+    <script src="DiscoveryManager.js"></script>
     <script src="AudioManager.js"></script>
     <script src="main.js"></script>
 </body>

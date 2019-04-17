@@ -137,13 +137,25 @@
 
         {{/each}}
     </script>
-      
-    <div class="carousel"></div> 
+    <div class="loader">
+            <div class="bar">
+                    <div class="circle"></div>
+                    <p id="fatMan">Headphons On</p>
+                  </div>
+                  
+        </div>
+              
+    <div class="carousel"></div>
 
+    
     <script id="discover-podcasts-template" type="text/x-handlebars-template">
         {{#each podcasts}}
         <div class="podcast">
-            <a class="carousel-item" href="#one!"><img src="{{image}}" style=width:100%"></a>
+            <p class="episodeName" class="{{id}}" id="{{audioLink}}"></p>
+            <a class="carousel-item"><img class = "car-img" src="{{image}}" >
+                <i class="fas fa-stop"></i>
+                <i class ="fas fa-play"></i>
+            </a>
          
         {{/each}}
         </div>
@@ -151,23 +163,8 @@
 
    
     </script>
-    
-    <!-- <p class="episodeName" id="{{id}}" data-id="{{audioLink}}">{{episodeName}}</p>
-    <p class="length">{{audioLength}}</p>
-    <i class ="fas fa-play"></i>       
-    <i class="fas fa-pause"></i>        
-    <i class="fas fa-stop"></i>
-    <i class="remove far fa-heart"></i>      
-             -->
-           
-          
-    
 
-
-
-         
-
-    <script id="genre-discovery-template" type="text/x-handlebars-template">
+   <script id="genre-discovery-template" type="text/x-handlebars-template">
         <p class="how-much-time">Pick a Genre?</p>
             <hr class="hr-line">
         <div class="genres">

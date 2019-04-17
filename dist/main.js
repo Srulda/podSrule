@@ -5,6 +5,7 @@ const discoveryManager = new DiscoveryManager()
 
 $(document).ready(function () {
     $('.tabs').tabs()
+
 })
 
 
@@ -90,10 +91,12 @@ $("body").on("click", ".genre", async function () {
     let genreID = $(this).attr("data-id")
     discoveryManager.genre = genre
     discoveryManager.genreId = genreID
-
+    $(".loader").css("display", "block")
     await discoveryManager.discoverPodcasts()
+    $(".loader").css("display", "none")
     renderer.renderDiscovered(discoveryManager.discoveredPodcasts)
     $('.carousel').carousel()
+
 
 })
 

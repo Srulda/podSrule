@@ -120,9 +120,6 @@ router.get('/podcasts', function (req, res) {
     })
 })
 
-
-
-
 router.get('/discover/:maxLength/:language/:genreName/:genreID', async function (req, res) {
 
     let genreName = req.params.genreName
@@ -170,6 +167,21 @@ router.get('/discover/:maxLength/:language/:genreName/:genreID', async function 
         
         res.send(discoPodcasts)
     })
+})
+
+
+router.put(`/saved/:podID`, async function (req, res) {
+    let id = req.params.podID
+
+    await Podcast.findOneAndUpdate({id: id}, { $set: {saved: true} })
+    res.send('Updated saved attribute of podcast.')
+})
+
+router.put(`/played/:podID`, async function (req, res) {
+    let id = req.params.podID
+
+    await Podcast.findOneAndUpdate({id: id}, { $set: {played: true} })
+    res.send('Updated played attribute of podcast.')
 })
 
 module.exports = router

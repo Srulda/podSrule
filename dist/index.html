@@ -7,11 +7,12 @@
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="./materialize-css/dist/css/materialize.min.css"
-          media="screen,projection" />
+        media="screen,projection" />
     <link rel="stylesheet" type="text/css" media="screen" href="style.css">
     <title> PodsRule </title>
-    <link rel = "icon" href = "https://b.kisscc0.com/20180730/poq/kisscc0-beats-solo-2-beats-electronics-noise-cancelling-he-headphone-5b5f040a127b52.4666383515329536100757.jpg" 
-    type = "image/x-icon"> 
+    <link rel="icon"
+        href="https://b.kisscc0.com/20180730/poq/kisscc0-beats-solo-2-beats-electronics-noise-cancelling-he-headphone-5b5f040a127b52.4666383515329536100757.jpg"
+        type="image/x-icon">
 
 
 
@@ -29,23 +30,24 @@
         </div>
     </div>
 
+  <div id="main-area">
 
+        <div class="podcasts"></div>
 
+        <div id="sidebar">
 
-    <div class="podcasts"></div>
-
-    <div id="sidebar">
-
-        <div class="row">
-            <div class="col s12">
-                <ul class="tabs">
-                    <li class="tab col s2"><a class="active" href="#favorited">Favorited</a></li>
-                    <li class="tab col s2"><a href="#recently-played">Recently Played</a></li>
-                </ul>
+            <div class="row">
+                <div class="col s12">
+                    <ul class="tabs">
+                        <li class="tab col s6"><a class="active" href="#favorited">Favorited</a></li>
+                        <li class="tab col s6"><a href="#recently-played">Recently Played</a></li>
+                    </ul>
+                </div>
+                <div id="favorited" class="col s12"></div>
+                <div id="recently-played" class="col s12">Test 2</div>
             </div>
-            <div id="favorited" class="col s12"></div>
-            <div id="recently-played" class="col s12">Test 2</div>
         </div>
+
     </div>
 
 
@@ -114,20 +116,20 @@
 
         {{#each podcasts}}
         <div class="row">
-                <div class="col s12 m6">
+                <div class="col s12">
                   <div class="card blue-grey darken-1">
                     <div class="card-content white-text podcast">
-                        <div><img src="{{image}}"></div>
-                        <div>
+                        <div><img class="circle col s12" src="{{image}}"></div>
+                        <div class="col s12">
                             <span class="card-title episodeName" id="{{id}}" data-id="{{audioLink}}">{{episodeName}}</span>
                             <p class="length">{{audioLength}}</p>
                         </div>
                     </div>
                     <div class="card-action">
-                      <a href="#"><i class ="fas fa-play"></i></a>
-                      <a href="#"><i class="fas fa-pause"></i></a>
-                      <a href="#"><i class="fas fa-stop"></i></i></a>
-                      <a href="#"><i class="remove far fa-heart"></i></a>
+                      <a><i class ="fas fa-play"></i></a>
+                      <a><i class="fas fa-pause"></i></a>
+                      <a><i class="fas fa-stop"></i></i></a>
+                      <a><i class="remove far fa-heart"></i></a>
                     </div>
                   </div>
                 </div>

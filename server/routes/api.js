@@ -69,7 +69,7 @@ router.get('/podcast/:podcastName', async function (req, res) {
     let podcasts = []
 
     let options = {
-        uri: `https://listen-api.listennotes.com/api/v2/search?q=${podName}`,
+        uri: `https://listen-api.listennotes.com/api/v2/search?q=${podName}&sort_by_date=0`,
         headers: {
             'X-ListenAPI-Key': APIKey
         }
@@ -114,8 +114,8 @@ router.delete(`/podcast/:podcastID`, function (req, res) {
     })
 })
 
-router.get('/podcasts', function(req, res) {
-    Podcast.find({}, function(err, podcasts) {
+router.get('/podcasts', function (req, res) {
+    Podcast.find({}, function (err, podcasts) {
         res.send(podcasts)
     })
 })
@@ -123,37 +123,39 @@ router.get('/podcasts', function(req, res) {
 
 
 
+router.get('/discover/:maxLength/language/genreName/genreID', async function (req, res) {
+
+    let genreName = req.params.genreName
+    let maxLength = req.params.maxLength
+    let genreID = req.params.genreID
+    let language = req.params.language
+    let discoPodcasts = []
+    let discoUrl
+    if (maxLength === 90) {
+        discoUrl = `https://listen-api.listennotes.com/api/v2/search?q=${genreName}&sort_by_date=0&${language}&len_min${maxLength}&genre_ids=${genreID}&safe_mode=1`
+    } else {
+        discoUrl = `https://listen-api.listennotes.com/api/v2/search?q=${genreName}&sort_by_date=0&${language}&len_max${maxLength}&genre_ids=${genreID}&safe_mode=1`
+    }
+    let discover = {
+        uri: discoUrl,
+        headers: {
+            'X-ListenAPI-Key': APIKey
+        }
+    }
+    await request(discover, async function (error, response, body) {
+        let discoPodcastRec = JSON.parse(body).results
+
+        for (let i = 0; i < 6; i++) {
+            let podcast = await createPodcastDocument(
+                discoPodcastRec[i].podcast_title_original, podcastsRec[i].title_original,
+                discoPodcastRec[i].id, podcastsRec[i].image, podcastsRec[i].audio,
+                discoPodcastRec[i].audio_length, podcastsRec[i].genres,
+                discoPodcastRec[i].description_original, false, false)
+            discoPodcasts.push(podcast)
+        }
+
+        res.send(discoPodcasts)
+    })
+})
 
 module.exports = router
-
-
-/* let a =  unirest.get(`https://listen-api.listennotes.com/api/v2/genres`)
-        .header('X-ListenAPI-Key', APIKey).end(function (response) {
-            const genres = response.body.genres
-
-            for (let i in genresIds) {
-                for (let j in genres) {
-                    if (genresIds[i] === genres[j].id) {
-                        genresNames.push(genres[j].name)
-                    }
-                }
-            }
-
-            console.log(genresNames)
-        })
-
-        console.log("hi") */
-
-
-/* unirest.get(`https://listen-api.listennotes.com/api/v2/search?q=${podName}`)
-.header('X-ListenAPI-Key', APIKey).end(async function (response) {
-
-    let podcastsRec = response.body.results
-    let podcasts = []
-
-    for (let i = 0; i < 6; i++) {
-        podcasts.push(createPodcastDocument(podcastsRec[i]))
-    }
-
-    await res.send(podcasts)
-}) */

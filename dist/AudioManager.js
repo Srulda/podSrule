@@ -24,4 +24,10 @@ class AudioManager {
         this.audio = new Audio(mp3Link)
     }
 
+    plus(){
+        this.audio.currentTime +=30
+        }
+    minus(){
+        this.audio.currentTime -=30
+    }
 }

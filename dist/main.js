@@ -1,7 +1,7 @@
 const podManager = new PodManager()
 const audioManager = new AudioManager()
 const renderer = new Renderer()
-
+const discoveryManager = new DiscoveryManager()
 $(".search").on("click",async function(){
     let input = $(".userInput").val()
    await podManager.getPodData(input)
@@ -59,8 +59,26 @@ $("body").on("click", ".remove", function(){
     podManager.deletePod(podId)
     })
 
-$("body").on("click", ".plus", function(){
+
+
+
+$("body").on("click", ".time", function(){
+    let time = $(this).closest(".times").find(".time").attr("id")
+    discoveryManager.sendTime(time)
+    renderer.renderLang()
+})
+
+$("body").on("click", ".language", function(){
+    let lang =  $(this).closest(".languages").find(".language").attr("id")
+    discoveryManager.sendLang(lang)
+    renderer.renderGenres()
+})
+
+$("body").on("click", ".genres", function(){
+    let genre =  $(this).closest(".genres").find(".genre").attr("id")
+    discoveryManager.sendGenre(genre)
     
+
 })
 
 

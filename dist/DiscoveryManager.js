@@ -4,16 +4,27 @@ class DiscoveryManager {
         this._lang
         this._genre
         this._genreId
-        this._langArray = ["Hebrew", "English", "Spanish", "German", "Italian"]
+
+
+        this._langArray = [
+            {language:"Hebrew", pic: "https://upload.wikimedia.org/wikipedia/en/thumb/c/c3/Flag_of_France.svg/1200px-Flag_of_France.svg.png"},
+            {language: "English", pic: "https://upload.wikimedia.org/wikipedia/en/thumb/a/a4/Flag_of_the_United_States.svg/1200px-Flag_of_the_United_States.svg.png"},
+            {language: "Spanish", pic: "https://upload.wikimedia.org/wikipedia/en/thumb/9/9a/Flag_of_Spain.svg/1125px-Flag_of_Spain.svg.png"},
+            {language: "German", pic: "https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Flag_of_Germany.svg/1200px-Flag_of_Germany.svg.png"},
+            {language: "Italian", pic: "https://upload.wikimedia.org/wikipedia/en/thumb/0/03/Flag_of_Italy.svg/1200px-Flag_of_Italy.svg.png"}
+                            ]
+
+
+
         this._genreIdAndName = [
-            {genre: "sports", genreId: 77 },
-            {genre: "technology", genreId: 127},
-            {genre: "tv & Film", genreId: 68 },
-            {genre: "religion & spirituality", genreId: 69 },
-            {genre: "eduacation", genreId: 111 },
-            {genre: "society & culture", genreId: 122  },
-            {genre: "music", genreId: 134  },
-            {genre: "history", genreId: 125  }
+            {genre: "sports", genreId: 77, i: `far fa-futbol`},
+            {genre: "technology", genreId: 127, i:`fas fa-laptop-code`},
+            {genre: "tv & Film", genreId: 68, i:`fas fa-video`},
+            {genre: "religion & spirituality", genreId: 69, i: `fas fa-hamsa` },
+            {genre: "eduacation", genreId: 111, i: `fas fa-user-graduate`},
+            {genre: "society & culture", genreId: 122, i: `fas fa-globe-asia`},
+            {genre: "music", genreId: 134, i:  `fas fa-music`},
+            {genre: "history", genreId: 125, i: `fas fa-monument`}
         ]
         this._discoveredPodcasts = []
 

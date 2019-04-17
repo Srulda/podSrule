@@ -6,7 +6,7 @@ class Renderer {
         let template = Handlebars.compile(source)
         let newHTML = template({ languages })
         
-        $("#discovery-container").append(newHTML)
+        $(".flags-container").append(newHTML)
 
     }
 
@@ -25,7 +25,7 @@ class Renderer {
         let template = Handlebars.compile(source)
         let newHTML = template({ podcasts })
         
-        $("#discovery-container").empty().append(newHTML)
+        $(".carousel").empty().append(newHTML)
     }
 
     renderSaved(podcasts) {

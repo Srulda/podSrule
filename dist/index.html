@@ -20,6 +20,7 @@
 
 <body>
 
+
     <div class="wrap">
         <div class="nav">
             <input type="text" class="userInput" placeholder="What are you looking for?">
@@ -29,8 +30,7 @@
         </div>
     </div>
 
-
-    <div id="main-area">
+  <div id="main-area">
 
         <div class="podcasts"></div>
 
@@ -75,7 +75,7 @@
                 </div>
             </div>
         </div>
-
+            <div class="flags-container"></div>
 
     </div>
 
@@ -137,38 +137,60 @@
 
         {{/each}}
     </script>
+      
+    <div class="carousel"></div> 
 
     <script id="discover-podcasts-template" type="text/x-handlebars-template">
         {{#each podcasts}}
         <div class="podcast">
-            <img src="{{image}}">
-            <p class="episodeName" id="{{id}}" data-id="{{audioLink}}">{{episodeName}}</p>
-            <p class="length">{{audioLength}}</p>
-            <div><i class ="fas fa-play"></i></div>        
-            <div><i class="fas fa-pause"></i></div>        
-            <div><i class="fas fa-stop"></i></div>  
-            <i class="remove far fa-heart"></i> 
-        </div>
+            <a class="carousel-item" href="#one!"><img src="{{image}}" style=width:100%"></a>
+         
         {{/each}}
+        </div>
+      
 
-        <div id="start-over-button">Start Over</div>
+   
     </script>
+    
+    <!-- <p class="episodeName" id="{{id}}" data-id="{{audioLink}}">{{episodeName}}</p>
+    <p class="length">{{audioLength}}</p>
+    <i class ="fas fa-play"></i>       
+    <i class="fas fa-pause"></i>        
+    <i class="fas fa-stop"></i>
+    <i class="remove far fa-heart"></i>      
+             -->
+           
+          
+    
+
+
+
+         
 
     <script id="genre-discovery-template" type="text/x-handlebars-template">
-
-        <div id="genres">
+        <p class="how-much-time">Pick a Genre?</p>
+            <hr class="hr-line">
+        <div class="genres">
             {{#each genres}}
-            <div class="genre" data-id="{{genreId}}" data-name="{{genre}}">{{genre}}</div>
+            <div class="genre" data-id="{{genreId}}" data-name="{{genre}}"> 
+                <i class="{{i}} genre-icon"></i>
+                <div class="genre-text"> {{genre}}</div>
+            </div>
+               
+            
+            
             {{/each}}
         </div>
     
     </script>
 
     <script id="language-discovery-template" type="text/x-handlebars-template">
-
-        <div id="languages">
+        <p class="how-much-time">Pick a language?</p>
+            <hr class="hr-line">
+        <div class="languages">
             {{#each languages}}
-            <div class="language" data-id="{{this}}">{{this}}</div>
+           
+            <div class="language" data-id="{{language}}"><img class="flags" src="{{pic}}"><p>{{language}}</p></div>
             {{/each}}
         </div>
     

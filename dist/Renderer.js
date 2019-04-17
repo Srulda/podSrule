@@ -33,7 +33,7 @@ class Renderer {
         let template = Handlebars.compile(source)
         let newHTML = template({ podcasts })
         
-        $("#sidebar").empty().append(newHTML)
+        $("#favorited").empty().append(newHTML)
     }
 
     renderData(data) {

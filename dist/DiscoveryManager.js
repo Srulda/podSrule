@@ -4,7 +4,7 @@ class DiscoveryManager {
         this._lang
         this._genre
         this._genreId
-        this._langArray = ["Hebrew", "English", "Spanish", "German", "Italian"]
+        this._langArray = [language:"Hebrew", "English", "Spanish", "German", "Italian"]
         this._genreIdAndName = [
             {genre: "sports", genreId: 77 },
             {genre: "technology", genreId: 127},

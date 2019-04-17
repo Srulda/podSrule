@@ -2,10 +2,19 @@ const podManager = new PodManager()
 const audioManager = new AudioManager()
 const renderer = new Renderer()
 const discoveryManager = new DiscoveryManager()
-$(".search").on("click",async function(){
-    let input = $(".userInput").val()
-   await podManager.getPodData(input)
+
+$(document).ready(function(){
+    $('.tabs').tabs()
+  })
+
+const handleSearch = async function(podcastInput) {
+    await podManager.getPodData(podcastInput)
     renderer.renderData(podManager.searchPodcast)
+}
+
+$(".search").on("click", async function(){
+    handleSearch($(".userInput").val())
+    $(".userInput").val("")
 })
 
 
@@ -57,7 +66,7 @@ renderer.renderSaved(podManager.savedPodcast)
 $("body").on("click", ".remove", function(){
     let podId = $(this).closest(".podcast").find(".episodeName").attr("id")
     podManager.deletePod(podId)
-    })
+})
 
 
 
@@ -82,12 +91,26 @@ $("body").on("click", ".genre", async function(){
     discoveryManager.genre = genre
     discoveryManager.genreId = genreID
 
-    await discoveryManager.discoverPodcasts()
-     
+    await discoveryManager.discoverPodcasts() 
     renderer.renderDiscovered(discoveryManager.discoveredPodcasts)
-    
-
 })
+
+$(document).keypress(function (e) {
+    var key = e.which
+    if (key === 13) {
+        handleSearch($(".userInput").val())
+        $(".userInput").val("")
+    }
+})
+
+const loadPage = async function () {
+    await podManager.getDataFromDB()
+    renderer.renderSaved(podManager.savedPodcast)
+}
+
+loadPage()
+
+
 
 
 

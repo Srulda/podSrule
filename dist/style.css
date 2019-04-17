@@ -48,7 +48,6 @@ body{
 #times {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    
 }
 
 /* #podcast{
@@ -60,7 +59,7 @@ body{
 
 /* Danny's sidebar design */
 
-.card-content {
+.saved-pod-card {
     display: grid;
     grid-template-areas: 
     "img title title"
@@ -81,13 +80,7 @@ body{
     grid-area: img;
 }
 
-#main-area {
-    display: grid;
-    grid-template-columns: 4fr 1fr;
-    grid-gap: 2%;
-}
-
-.card{
+.card {
     margin: 0;
 }
 
@@ -97,7 +90,7 @@ body{
 }
 
 .tabs > .tab > a {
-    font-size: 8px;
+    font-size: 10px;
     padding-right: 0;
     padding-left: 0;
 }
@@ -116,10 +109,37 @@ body{
     margin-bottom: 3px;
 }
 
+.sidenav-trigger {
+    display: grid;
+    position: fixed;
+    right: 0;
+    font-size: 30px;
+    margin-right: 10px;
+}
+
+.btn-floating {
+    margin-top: 0;
+}
+
 /* chen */
 
-.time{
-  justify-self: center;
+.time {
+    display: grid;
+    justify-self: center;
+}
+
+.time > img {
+    display: grid;
+    justify-self: center;
+    justify-content: center;
+}
+
+.time > p {
+    display: grid;
+    justify-self: center;
+    justify-content: center;
+    margin: 5px;
+    margin-bottom: 0;
 }
 
 .how-much-time{

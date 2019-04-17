@@ -3,6 +3,10 @@ const audioManager = new AudioManager()
 const renderer = new Renderer()
 const discoveryManager = new DiscoveryManager()
 
+$(document).ready(function(){
+    $('.tabs').tabs()
+  })
+
 const handleSearch = async function(podcastInput) {
     await podManager.getPodData(podcastInput)
     renderer.renderData(podManager.searchPodcast)
@@ -62,7 +66,7 @@ renderer.renderSaved(podManager.savedPodcast)
 $("body").on("click", ".remove", function(){
     let podId = $(this).closest(".podcast").find(".episodeName").attr("id")
     podManager.deletePod(podId)
-    })
+})
 
 
 
@@ -98,6 +102,15 @@ $(document).keypress(function (e) {
         $(".userInput").val("")
     }
 })
+
+const loadPage = async function () {
+    await podManager.getDataFromDB()
+    renderer.renderSaved(podManager.savedPodcast)
+}
+
+loadPage()
+
+
 
 
 

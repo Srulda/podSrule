@@ -8,8 +8,19 @@ class PodManager {
     async getPodData(podName) {
         let getData = await $.get(`/podcast/${podName}`)
         this.searchPodcast = getData
+        for(let pod of this.searchPodcast){
+            pod.audioManager = new AudioManager(pod.audioLink, pod.audioLink)
+        }
+        console.log(this.searchPodcast)
     }
 
+     getCorrectPod(id){
+        for(let pod of this.searchPodcast){
+            if(id == pod.id){
+                return pod
+            }
+        }
+    }
     async getDataFromDB() {
         let getDataDB = await $.get('/podcasts')
         for (let pod of getDataDB) {

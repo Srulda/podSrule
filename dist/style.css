@@ -48,12 +48,70 @@ body{
 #times {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    
 }
 
-#podcast{
+
+
+
+
+
+/* chen */
+
+.time{
+  justify-self: center;
+}
+
+.how-much-time{
+  font-size: 3em;
+  text-align: center;
+}
+
+.hr-line{
+  border: 1px solid black;
+  width:110px;
+  margin-top:-40px;
+  margin-bottom:40px;;
+}
+.card-content{
+  display: grid;
+
+}
+.description{
+  justify-self: center;
+  text-align: center;
+
+}
+
+.podcasts{
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap:40px;
+  padding: 10px;
+}
+
+.description{
+ padding:20px;
+}
+.card-content .btns{
+  font-size:4vh;
+  margin-top:6vh;
+  justify-self: center;
+}
+
+.fas:hover{
+  color:red;
+}
+
+
+@media(max-width:768px){
+  .podcasts{
 
     display: grid;
-    grid-template-areas: 
-    
+    grid-template-columns: 1fr 1fr;
+    grid-gap:40px;
+    padding: 10px;
+  }
 }
 

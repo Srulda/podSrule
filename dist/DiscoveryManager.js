@@ -8,7 +8,9 @@ class DiscoveryManager {
     }
 
     async discoverPodcasts(time, language, genre, genreId) {
-        this._discoveredPodcasts = await $.get(`/discover/${time}/${language}/${genre}/${genreId}`)
+
+        let a = await $.get(`/discover/${time}/${language}/${genre}/${genreId}`)
+        console.log(a)
     }
     
 }

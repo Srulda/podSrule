@@ -98,7 +98,7 @@
 
     <script id="discover-podcasts-template" type="text/x-handlebars-template">
         {{#each podcasts}}
-        <div class="discovered-podcast">
+        <div class="podcast">
             <img src="{{image}}">
             <p class="episodeName" id="{{id}}" data-id="{{audioLink}}">{{episodeName}}</p>
             <p class="length">{{audioLength}}</p>
@@ -113,18 +113,22 @@
     </script>
 
     <script id="genre-discovery-template" type="text/x-handlebars-template">
-        
-        {{#each genres}}
-        <div class="discovery-genre" data-id="{{id}}">{{name}}</div>
-        {{/each}}
+
+        <div id="genres">
+            {{#each genres}}
+            <div class="genre" data-id="{{genreId}}" data-name="{{genre}}">{{genre}}</div>
+            {{/each}}
+        </div>
     
     </script>
 
     <script id="language-discovery-template" type="text/x-handlebars-template">
-    
-        {{#each languages}}
-        <div class="discovery-language">{{this}}</div>
-        {{/each}}
+
+        <div id="languages">
+            {{#each languages}}
+            <div class="language" data-id="{{this}}">{{this}}</div>
+            {{/each}}
+        </div>
     
     </script>
 

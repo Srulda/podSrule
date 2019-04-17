@@ -144,15 +144,24 @@ router.get('/discover/:maxLength/:language/:genreName/:genreID', async function 
     }
     await request(discover, async function (error, response, body) {
         let discoPodcastRec = JSON.parse(body).results
+        
+        console.log(discoPodcastRec)
 
-        for (let i = 0; i < 6; i++) {
-            let podcast = await createPodcastDocument(
-                discoPodcastRec[i].podcast_title_original, discoPodcastRec[i].title_original,
-                discoPodcastRec[i].id, discoPodcastRec[i].image, discoPodcastRec[i].audio,
-                discoPodcastRec[i].audio_length, discoPodcastRec[i].genres,
-                discoPodcastRec[i].description_original, false, false)
-            discoPodcasts.push(podcast)
+        
+        console.log(discoPodcastRec.length - 1)
+        for (let i = 0; i < 10; i++) {
+            
+            if (discoPodcastRec[i]) {
+                let podcast = await createPodcastDocument(
+                    discoPodcastRec[i].podcast_title_original, discoPodcastRec[i].title_original,
+                    discoPodcastRec[i].id, discoPodcastRec[i].image, discoPodcastRec[i].audio,
+                    discoPodcastRec[i].audio_length, discoPodcastRec[i].genres,
+                    discoPodcastRec[i].description_original, false, false)
+                
+                discoPodcasts.push(podcast)
+            }
         }
+        
         res.send(discoPodcasts)
     })
 })

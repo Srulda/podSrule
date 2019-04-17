@@ -1,16 +1,49 @@
 class DiscoveryManager {
     constructor() {
+        this._time
+        this._lang
+        this._genre
+        this._genreId
+        this._langArray = ["Hebrew", "English", "Spanish", "German", "Italian"]
+        this._genreIdAndName = [
+            {genre: "sports", genreId: 77 },
+            {genre: "technology", genreId: 127},
+            {genre: "tv & Film", genreId: 68 },
+            {genre: "religion & spirituality", genreId: 69 },
+            {genre: "eduacation", genreId: 111 },
+            {genre: "society & culture", genreId: 122  },
+            {genre: "music", genreId: 134  },
+            {genre: "history", genreId: 125  }
+        ]
         this._discoveredPodcasts = []
+
     }
 
     get discoveredPodcasts() {
         return this._discoveredPodcasts
     }
 
-    async discoverPodcasts(time, language, genre, genreId) {
+    set time(time){
+        this._time = time
+    }
+    set lang(lang){
+        this._lang = lang
+    }
+    set genre(genre){
+        this._genre = genre
+    }
+    set genreId ( genreId){
+        this._genreId = genreId
 
-        let a = await $.get(`/discover/${time}/${language}/${genre}/${genreId}`)
-        console.log(a)
+    }
+
+    async discoverPodcasts() {
+        console.log(this._time)
+        console.log(this._lang)
+        console.log(this._genre)
+        console.log(this._genreId)
+
+        this._discoveredPodcasts = await $.get(`/discover/${this._time}/${this._lang}/${this._genre}/${this._genreId}`)
     }
     
 }

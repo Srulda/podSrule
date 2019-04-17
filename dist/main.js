@@ -63,20 +63,28 @@ $("body").on("click", ".remove", function(){
 
 
 $("body").on("click", ".time", function(){
-    let time = $(this).closest(".times").find(".time").attr("id")
-    discoveryManager.sendTime(time)
-    renderer.renderLang()
+    let time = $(this).data().id
+    console.log(time)
+    discoveryManager.time = time
+    console.log(discoveryManager._time)
+    renderer.renderLang(discoveryManager._langArray)
 })
 
 $("body").on("click", ".language", function(){
-    let lang =  $(this).closest(".languages").find(".language").attr("id")
-    discoveryManager.sendLang(lang)
-    renderer.renderGenres()
+    let lang =  $(this).data().id
+    discoveryManager.lang = lang
+    renderer.renderGenres(discoveryManager._genreIdAndName)
 })
 
-$("body").on("click", ".genres", function(){
-    let genre =  $(this).closest(".genres").find(".genre").attr("id")
-    discoveryManager.sendGenre(genre)
+$("body").on("click", ".genre", async function(){
+    let genre =  $(this).attr("data-name")
+    let genreID =  $(this).attr("data-id")
+    discoveryManager.genre = genre
+    discoveryManager.genreId = genreID
+
+    await discoveryManager.discoverPodcasts()
+     
+    renderer.renderDiscovered(discoveryManager.discoveredPodcasts)
     
 
 })

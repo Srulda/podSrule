@@ -73,7 +73,7 @@
                 </div>
             </div>
         </div>
-
+            <div class="flags-container"></div>
 
     </div>
 
@@ -166,20 +166,29 @@
          
 
     <script id="genre-discovery-template" type="text/x-handlebars-template">
-
-        <div id="genres">
+        <p class="how-much-time">Pick a Genre?</p>
+            <hr class="hr-line">
+        <div class="genres">
             {{#each genres}}
-            <div class="genre" data-id="{{genreId}}" data-name="{{genre}}">{{genre}}</div>
+            <div class="genre" data-id="{{genreId}}" data-name="{{genre}}"> 
+                <i class="{{i}} genre-icon"></i>
+                <div class="genre-text"> {{genre}}</div>
+            </div>
+               
+            
+            
             {{/each}}
         </div>
     
     </script>
 
     <script id="language-discovery-template" type="text/x-handlebars-template">
-
-        <div id="languages">
+        <p class="how-much-time">Pick a language?</p>
+            <hr class="hr-line">
+        <div class="languages">
             {{#each languages}}
-            <div class="language" data-id="{{this}}">{{this}}</div>
+           
+            <div class="language" data-id="{{language}}"><img class="flags" src="{{pic}}"><p>{{language}}</p></div>
             {{/each}}
         </div>
     

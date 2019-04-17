@@ -126,4 +126,43 @@ body{
   }
 }
 
+.flags{
+  width:11vw;
+  height: 11vh;
+}
+
+.language{
+  justify-self: center;
+}
+
+.languages{
+  
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  margin-bottom: 20px;
+  
+}
+
+.genres{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr)
+}
+
+.genre{
+ margin: 50px;
+  justify-self: center;
+
+}
+
+
+.genre-icon{
+  text-align: center;
+  font-size: 3.5em;
+}
+
+.genre-text{
+  font-size: 1em;
+  text-align: center;
+
+}
 

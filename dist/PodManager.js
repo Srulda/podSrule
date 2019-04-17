@@ -21,8 +21,28 @@ class PodManager {
             }
         }
     }
+
+    getCorrectSavedPod(id){
+        for(let pod of this.savedPodcast){
+            if(id == pod.id){
+                return pod
+            }
+        }
+    }
+
+    getCorrectListendPod(id){
+        for(let pod of this.listenedPodcast){
+            if(id == pod.id){
+                return pod
+            }
+        }  
+    }
     async getDataFromDB() {
         let getDataDB = await $.get('/podcasts')
+        for(let pod of getDataDB){
+            pod.audioManager = new AudioManager(pod.audioLink, pod.audioLink)
+        }
+
         for (let pod of getDataDB) {
             console.log(pod)
             if (pod.saved) {
@@ -44,6 +64,11 @@ class PodManager {
                 } else if (pod.played) {
                     pod.saved = true
                     this.savedPodcast.push(pod)
+                    $.ajax({
+                        url: `/saved/${podID}`,
+                        method: "PUT",
+                        success: function (response) {}
+                    })
                 } else {
                     pod.saved = true
                     this.savedPodcast.push(pod)
@@ -58,6 +83,35 @@ class PodManager {
             }
         }
         console.log(this.savedPodcast)
+    }
+
+    savedPlayedPod(podID) {
+        for (let pod of this.searchPodcast) {
+            if (pod.id == podID) {
+                console.log('before')
+                if (pod.played) {
+                    return
+                } else if (pod.saved) {
+                    pod.played = true
+                    this.listenedPodcast.push(pod)
+                    $.ajax({
+                        url: `/played/${podID}`,
+                        method: "PUT",
+                        success: function (response) {}
+                    })
+                } else {
+                    pod.played = true
+                    this.listenedPodcast.push(pod)
+                    $.ajax({
+                        url: `/podcast`,
+                        method: "POST",
+                        traditional: true,
+                        data: pod,
+                        success: function (response) {}
+                    })
+                }
+            }
+        }
     }
 
 

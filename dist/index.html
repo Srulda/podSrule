@@ -9,37 +9,43 @@
 </head>
 
 <body>
-    <div id="nav">
-        <input type="text" class="userInput">
-        <a class="search waves-effect waves-light btn">Search</a>
+
+<div class="wrap">
+    <div class="nav">
+        <input type="text" class="userInput" placeholder="What are you looking for?">
+        <button class="search">
+            <i class="fa fa-search"></i>
+        </button>
     </div>
+</div>
 
 
-
-    <div class="podcasts"></div>
+<div class="podcasts"></div>
 
     <div id="sidebar">
-        
+
     </div>
 
 
     <script id="podcasts-template" type="text/x-handlebars-template">
         {{#each data}}
     <div class="podcast">
-        <p class="PodName">{{PodName}} </p>
+            <img src="{{image}}">
+            <i class="save fas fa-heart"></i> 
+            <i class="remove far fa-heart"></i> 
+            <span class="PodName">{{PodName}} </span>
+            <span class="episodeName" id="{{id}}" data-id="{{audioLink}}">{{episodeName}} </span>
+
         <p class="description">{{description}} </p>
-
-        <p class="episodeName" id="{{id}}" data-id="{{audioLink}}">{{episodeName}} </p>
-
-        <img src="{{image}}">
-        <div><i class ="fas fa-play"></i></div>        
-        <div><i class="fas fa-pause"></i></div>        
-        <div><i class="fas fa-stop"></i></div>  
-    <div>
-        <i class="save fas fa-heart"></i> 
-        <i class="remove far fa-heart"></i> 
+        
+        <div class="player">
+            <i class ="fas fa-play"></i>       
+            <i class="fas fa-pause"></i>      
+            <i class="fas fa-stop"></i></div>  
+        <div>
+        
     </div>
-            
+    
 
     </div>
         {{/each}}

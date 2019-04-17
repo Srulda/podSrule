@@ -6,7 +6,7 @@ class DiscoveryManager {
         this._genreId
         this._langArray = ["Hebrew", "English", "Spanish", "German", "Italian"]
         this._genreIdAndName = [
-            {genre: "sports", genId: 77 },
+            {genre: "sports", genreId: 77 },
             {genre: "technology", genreId: 127},
             {genre: "tv & Film", genreId: 68 },
             {genre: "religion & spirituality", genreId: 69 },
@@ -38,6 +38,10 @@ class DiscoveryManager {
     }
 
     async discoverPodcasts() {
+        console.log(this._time)
+        console.log(this._lang)
+        console.log(this._genre)
+        console.log(this._genreId)
 
         this._discoveredPodcasts = await $.get(`/discover/${this._time}/${this._lang}/${this._genre}/${this._genreId}`)
     }

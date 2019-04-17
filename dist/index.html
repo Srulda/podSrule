@@ -108,6 +108,24 @@
             <i class="remove far fa-heart"></i> 
         </div>
         {{/each}}
+
+        <div id="start-over-button">Start Over</div>
+    </script>
+
+    <script id="genre-discovery-template" type="text/x-handlebars-template">
+        
+        {{#each genres}}
+        <div class="discovery-genre" data-id="{{id}}">{{name}}</div>
+        {{/each}}
+    
+    </script>
+
+    <script id="language-discovery-template" type="text/x-handlebars-template">
+    
+        {{#each languages}}
+        <div class="discovery-language">{{this}}</div>
+        {{/each}}
+    
     </script>
 
 

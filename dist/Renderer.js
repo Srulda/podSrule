@@ -1,6 +1,24 @@
 class Renderer {
 
-    
+    renderLang(languages) {
+
+        let source = $("#language-discovery-template").html()
+        let template = Handlebars.compile(source)
+        let newHTML = template({ languages })
+        
+        $("#discovery-container").append(newHTML)
+
+    }
+
+    renderGenres(genres) {
+
+        let source = $("#genre-discovery-template").html()
+        let template = Handlebars.compile(source)
+        let newHTML = template({ genres })
+        
+        $("#discovery-container").append(newHTML)
+    }
+
 
     renderDiscovered(podcasts) {
         let source = $("#discover-podcasts-template").html()

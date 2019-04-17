@@ -2,10 +2,15 @@ const podManager = new PodManager()
 const audioManager = new AudioManager()
 const renderer = new Renderer()
 const discoveryManager = new DiscoveryManager()
-$(".search").on("click",async function(){
-    let input = $(".userInput").val()
-   await podManager.getPodData(input)
+
+const handleSearch = async function(podcastInput) {
+    await podManager.getPodData(podcastInput)
     renderer.renderData(podManager.searchPodcast)
+}
+
+$(".search").on("click", async function(){
+    handleSearch($(".userInput").val())
+    $(".userInput").val("")
 })
 
 
@@ -82,11 +87,16 @@ $("body").on("click", ".genre", async function(){
     discoveryManager.genre = genre
     discoveryManager.genreId = genreID
 
-    await discoveryManager.discoverPodcasts()
-     
+    await discoveryManager.discoverPodcasts() 
     renderer.renderDiscovered(discoveryManager.discoveredPodcasts)
-    
+})
 
+$(document).keypress(function (e) {
+    var key = e.which
+    if (key === 13) {
+        handleSearch($(".userInput").val())
+        $(".userInput").val("")
+    }
 })
 
 

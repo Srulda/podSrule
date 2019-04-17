@@ -5,6 +5,7 @@ const discoveryManager = new DiscoveryManager()
 
 $(document).ready(function () {
     $('.tabs').tabs()
+    $('.sidenav').sidenav({edge: 'right'})
 })
 
 
@@ -61,6 +62,7 @@ $("body").on("click", ".save", function () {
     let podId = $(this).closest(".podcast").find(".episodeName").attr("id")
     podManager.savePod(podId)
     renderer.renderSaved(podManager.savedPodcast)
+    M.toast({html: 'Added to favorites!'})
 })
 
 $("body").on("click", ".remove", function () {

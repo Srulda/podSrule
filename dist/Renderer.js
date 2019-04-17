@@ -6,7 +6,7 @@ class Renderer {
         let template = Handlebars.compile(source)
         let newHTML = template({ languages })
         
-        $("#discovery-container").append(newHTML)
+        $(".flags-container").append(newHTML)
 
     }
 

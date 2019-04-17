@@ -5,7 +5,9 @@ const discoveryManager = new DiscoveryManager()
 
 $(document).ready(function () {
     $('.tabs').tabs()
-    $('.sidenav').sidenav({ edge: 'right' })
+    $('.sidenav').sidenav({
+        edge: 'right'
+    })
 })
 
 
@@ -93,6 +95,9 @@ $("body").on("click", ".time", function () {
     console.log(discoveryManager._time)
     renderer.renderLang(discoveryManager._langArray)
     $(".time").closest("#discovery-time-container").fadeOut()
+
+})
+
 $("body").on("click", ".carusela-play ", async function () {
     console.log("play?")
     let id = $(this).closest(".podcast").find(".episodeName").attr("id")
@@ -135,6 +140,10 @@ $("body").on("click", ".genres", async function () {
     await discoveryManager.discoverPodcasts()
     renderer.renderDiscovered(discoveryManager.discoveredPodcasts)
     $('.carousel').carousel()
+
+})
+
+
 $("body").on("click", ".played-pause", async function () {
     let id = $(this).closest(".row").find(".podcast").find(".episodeName").attr("id")
     let pod = podManager.getCorrectListendPod(id)
@@ -152,67 +161,57 @@ $("body").on("click", ".played-stop", function () {
 })
 
 
-    $("body").on("click", ".save", function () {
-        let podId = $(this).closest(".podcast").find(".episodeName").attr("id")
-        podManager.savePod(podId)
-        renderer.renderSaved(podManager.savedPodcast)
-        M.toast({ html: 'Added to favorites!' })
+$("body").on("click", ".save", function () {
+    let podId = $(this).closest(".podcast").find(".episodeName").attr("id")
+    podManager.savePod(podId)
+    renderer.renderSaved(podManager.savedPodcast)
+    M.toast({
+        html: 'Added to favorites!'
     })
+})
 
-    $("body").on("click", ".remove", function () {
-        let podId = $(this).closest(".podcast").find(".episodeName").attr("id")
-        podManager.deletePod(podId)
-    })
-
-
-
-
-    $("body").on("click", ".time", function () {
-        let time = $(this).data().id
-        console.log(time)
-        discoveryManager.time = time
-        console.log(discoveryManager._time)
-        renderer.renderLang(discoveryManager._langArray)
-        $(".time").closest("#discovery-time-container").fadeOut()
-
-    })
-
-    $("body").on("click", ".language", function () {
-        let lang = $(this).data().id
-        discoveryManager.lang = lang
-        renderer.renderGenres(discoveryManager._genreIdAndName)
-        $(this).closest(".flags-container").fadeOut()
-    })
-
-    $("body").on("click", ".genres", async function () {
-        let genre = $(this).attr("data-name")
-        let genreID = $(this).attr("data-id")
-        discoveryManager.genre = genre
-        discoveryManager.genreId = genreID
-
-        $(".loader").css("display", "block")
-        await discoveryManager.discoverPodcasts()
-        $(".loader").css("display", "none")
-        $(this).closest(".genres-container").fadeOut()
-        await discoveryManager.discoverPodcasts()
-        renderer.renderDiscovered(discoveryManager.discoveredPodcasts)
-        $('.carousel').carousel()
+$("body").on("click", ".remove", function () {
+    let podId = $(this).closest(".podcast").find(".episodeName").attr("id")
+    podManager.deletePod(podId)
+})
 
 
-    })
+$("body").on("click", ".language", function () {
+    let lang = $(this).data().id
+    discoveryManager.lang = lang
+    renderer.renderGenres(discoveryManager._genreIdAndName)
+    $(this).closest(".flags-container").fadeOut()
+})
 
-    $(document).keypress(function (e) {
-        var key = e.which
-        if (key === 13) {
-            handleSearch($(".userInput").val())
-            $(".userInput").val("")
-        }
-    })
+$("body").on("click", ".genres", async function () {
+    let genre = $(this).attr("data-name")
+    let genreID = $(this).attr("data-id")
+    discoveryManager.genre = genre
+    discoveryManager.genreId = genreID
 
-    const loadPage = async function () {
-        await podManager.getDataFromDB()
-        renderer.renderSaved(podManager.savedPodcast)
-        renderer.renderListened(podManager.listenedPodcast)
+    $(".loader").css("display", "block")
+    await discoveryManager.discoverPodcasts()
+    $(".loader").css("display", "none")
+    $(this).closest(".genres-container").fadeOut()
+    await discoveryManager.discoverPodcasts()
+    renderer.renderDiscovered(discoveryManager.discoveredPodcasts)
+    $('.carousel').carousel()
+
+
+})
+
+$(document).keypress(function (e) {
+    var key = e.which
+    if (key === 13) {
+        handleSearch($(".userInput").val())
+        $(".userInput").val("")
     }
+})
 
-    loadPage()
+const loadPage = async function () {
+    await podManager.getDataFromDB()
+    renderer.renderSaved(podManager.savedPodcast)
+    renderer.renderListened(podManager.listenedPodcast)
+}
+
+loadPage()

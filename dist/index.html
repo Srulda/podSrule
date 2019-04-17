@@ -115,13 +115,10 @@
                           <p class="description">{{description}}<b> read More>></b></p>
                          
                           <div class="btns"> 
-                                <i class="fas fa-play player-play"></i>
-                                <i class="fas fa-pause player-pause"></i>        
-                                <i class="fas fa-stop player-stop"></i> 
                                 <i class="fas fa-backward"></i>
-                                <i class="fas fa-pause"></i>
-                                <i class="fas fa-stop"></i> 
-                                <i class="fas fa-play"></i>
+                                <i class="fas fa-pause player-pause"></i>     
+                                <i class="fas fa-play player-play"></i>   
+                                <i class="fas fa-stop player-stop"></i> 
                                 <i class="fas fa-forward"></i>
                             </div>
 
@@ -149,13 +146,8 @@
                         </div>
                     </div>
                     <div class="card-action">
-                      <i class="fas fa-backward"></i>
-                                <i class="fas fa-pause"></i> 
-                                <i class="fas fa-play"></i>
-                                <i class="fas fa-stop"></i> 
-                                <i class="fas fa-forward"></i>
-                      <a><i class ="fas fa-play save-play"></i></a>
                       <a><i class="fas fa-pause save-pause"></i></a>
+                      <a><i class ="fas fa-play save-play"></i></a>
                       <a><i class="fas fa-stop save-stop"></i></i></a>
                       <a><i class="remove far fa-heart"></i></a>
                     </div>
@@ -180,8 +172,8 @@
                         </div>
                     </div>
                     <div class="card-action">
-                      <a><i class ="fas fa-play played-play"></i></a>
                       <a><i class="fas fa-pause played-pause"></i></a>
+                      <a><i class ="fas fa-play played-play"></i></a>
                       <a><i class="fas fa-stop played-stop"></i></i></a>
                       <a><i class="remove far fa-heart"></i></a>
 
@@ -246,10 +238,10 @@
 
     <script id="language-discovery-template" type="text/x-handlebars-template">
         <p class="how-much-time">PICK A LANGUAGE</p>
-            <hr class="hr-line">
+        <hr class="hr-line">
         <div class="languages">
+            
             {{#each languages}}
-           
             <div class="language" data-id="{{language}}"><img class="flags" src="{{pic}}"><p>{{language}}</p></div>
             {{/each}}
         </div>

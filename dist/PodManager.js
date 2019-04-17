@@ -44,7 +44,7 @@ class PodManager {
         }
 
         for (let pod of getDataDB) {
-            console.log(pod)
+            
             if (pod.saved) {
                 this.savedPodcast.push(pod)
             }
@@ -52,7 +52,6 @@ class PodManager {
                 this.listenedPodcast.push(pod)
             }
         }
-        console.log(this.listenedPodcast)
     }
 
     async savePod(podID) {

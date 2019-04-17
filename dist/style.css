@@ -60,12 +60,61 @@ body{
 
 /* Danny's sidebar design */
 
-/* .card-content {
+.card-content {
     display: grid;
     grid-template-areas: 
-    "img title"
-    "img dur";
-} */
+    "img title title"
+    "img dur dur";
+}
+
+
+
+.card-content > div > .episodeName {
+    grid-area: title;
+    font-size: 0.5em;
+}
+
+.card-content > .length {
+    grid-area: dur;
+}
+.card-content > img {
+    grid-area: img;
+}
+
+#main-area {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    grid-gap: 2%;
+}
+
+.card{
+    margin: 0;
+}
+
+.card-action {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.tabs > .tab > a {
+    font-size: 8px;
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.card .card-content .card-title {
+    line-height: 10px;
+    margin-bottom: 0;
+}
+
+.card .card-content {
+    padding: 12px;
+}
+
+.row {
+    margin-top: 2px;
+    margin-bottom: 3px;
+}
 
 
 

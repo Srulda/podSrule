@@ -11,12 +11,18 @@ $(".search").on("click",async function(){
 
 $("body").on("click", ".fa-play",async function(){
     let mp3 =  $(this).closest(".podcast").find(".episodeName").attr("data-id")
+    console.log(mp3)
+    console.log(audioManager.src)
     if(!audioManager.src){
         audioManager.changePodcast(mp3)
         audioManager.addSource(mp3)
         audioManager.playPodcast()
-      }else{
+      }
+      else{
         audioManager.playPodcast()
+        console.log("im here")
+        console.log(audioManager.src)
+
       }
 
 })
@@ -34,7 +40,13 @@ $("body").on("click", ".fa-play",async function(){
     audioManager.stopPodcast()
 })
 
+$("body").on("click", ".fa-forward", function(){
+    audioManager.plus()
+})
 
+$("body").on("click", ".fa-backward", function(){
+    audioManager.minus()
+})
 
 $("body").on("click", ".save", function(){
 let podId = $(this).closest(".podcast").find(".episodeName").attr("id")
@@ -47,6 +59,9 @@ $("body").on("click", ".remove", function(){
     podManager.deletePod(podId)
     })
 
+$("body").on("click", ".plus", function(){
+    
+})
 
 
 

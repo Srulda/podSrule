@@ -113,18 +113,22 @@
     </script>
 
     <script id="genre-discovery-template" type="text/x-handlebars-template">
-        
-        {{#each genres}}
-        <div class="discovery-genre" data-id="{{id}}">{{name}}</div>
-        {{/each}}
+
+        <div id="genres">
+            {{#each genres}}
+            <div class="discovery-genre" data-id="{{id}}" data-name="{{name}}">{{icon}}</div>
+            {{/each}}
+        </div>
     
     </script>
 
     <script id="language-discovery-template" type="text/x-handlebars-template">
-    
-        {{#each languages}}
-        <div class="discovery-language">{{this}}</div>
-        {{/each}}
+
+        <div id="languages">
+            {{#each languages}}
+            <div class="language" data-id="{{name}">{{icon}}</div>
+            {{/each}}
+        </div>
     
     </script>
 

@@ -96,7 +96,7 @@ router.post(`/podcast`, async function (req, res) {
     const podcast = req.body
     const newPodcast = await createPodcastDocument(podcast.podName, podcast.episodeName,
         podcast.id, podcast.image, podcast.audioLink, podcast.audioLength,
-        podcast.genres, podcast.description, podcast.saved, podcast.played)
+        podcast.genres, podcast.description, podcast.played, podcast.saved)
 
     let save = newPodcast.save()
     save.then(res.send(`${newPodcast.podName} has been saved to database`))

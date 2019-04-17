@@ -10,3 +10,8 @@
 .userInput{
 margin-right: 2vh;
 }
+
+#times {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}

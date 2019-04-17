@@ -1,5 +1,7 @@
 class Renderer {
 
+    
+
     renderDiscovered(podcasts) {
         let source = $("#discover-podcasts-template").html()
         let template = Handlebars.compile(source)

@@ -36,6 +36,14 @@ class Renderer {
         $("#favorited").empty().append(newHTML)
     }
 
+    renderListened(podcasts) {
+        let source = $("#listened-podcasts-template").html()
+        let template = Handlebars.compile(source)
+        let newHTML = template({ podcasts })
+        
+        $("#recently-played").empty().append(newHTML)
+    }
+
     renderData(data) {
         let source = $("#podcasts-template").html()
         let template = Handlebars.compile(source)

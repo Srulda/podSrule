@@ -32,7 +32,7 @@
                         </ul>
                     </div>
                     <div id="favorited" class="col s12"></div>
-                    <div id="recently-played" class="col s12">Test 2</div>
+                    <div id="recently-played" class="col s12"></div>
                 </div>
             </div>
         </li>
@@ -139,6 +139,32 @@
                       <a><i class ="fas fa-play save-play"></i></a>
                       <a><i class="fas fa-pause save-pause"></i></a>
                       <a><i class="fas fa-stop save-stop"></i></i></a>
+                      <a><i class="remove far fa-heart"></i></a>
+                    </div>
+                  </div>
+                </div>
+        </div>
+
+        {{/each}}
+    </script>
+
+    <script id="listened-podcasts-template" type="text/x-handlebars-template">
+
+        {{#each podcasts}}
+        <div class="row">
+                <div class="col s12">
+                  <div class="card blue-grey darken-1">
+                    <div class="saved-pod-card card-content white-text podcast">
+                        <div><img class="circle col s12" src="{{image}}"></div>
+                        <div class="col s12">
+                            <span class="card-title episodeName" id="{{id}}" data-id="{{audioLink}}">{{episodeName}}</span>
+                            <p class="length">{{audioLength}}</p>
+                        </div>
+                    </div>
+                    <div class="card-action">
+                      <a><i class ="fas fa-play played-play"></i></a>
+                      <a><i class="fas fa-pause played-pause"></i></a>
+                      <a><i class="fas fa-stop played-stop"></i></i></a>
                       <a><i class="remove far fa-heart"></i></a>
                     </div>
                   </div>

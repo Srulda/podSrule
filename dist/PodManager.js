@@ -64,6 +64,11 @@ class PodManager {
                 } else if (pod.played) {
                     pod.saved = true
                     this.savedPodcast.push(pod)
+                    $.ajax({
+                        url: `/saved/${podID}`,
+                        method: "PUT",
+                        success: function (response) {}
+                    })
                 } else {
                     pod.saved = true
                     this.savedPodcast.push(pod)
@@ -78,6 +83,35 @@ class PodManager {
             }
         }
         console.log(this.savedPodcast)
+    }
+
+    savedPlayedPod(podID) {
+        for (let pod of this.searchPodcast) {
+            if (pod.id == podID) {
+                console.log('before')
+                if (pod.played) {
+                    return
+                } else if (pod.saved) {
+                    pod.played = true
+                    this.listenedPodcast.push(pod)
+                    $.ajax({
+                        url: `/played/${podID}`,
+                        method: "PUT",
+                        success: function (response) {}
+                    })
+                } else {
+                    pod.played = true
+                    this.listenedPodcast.push(pod)
+                    $.ajax({
+                        url: `/podcast`,
+                        method: "POST",
+                        traditional: true,
+                        data: pod,
+                        success: function (response) {}
+                    })
+                }
+            }
+        }
     }
 
 

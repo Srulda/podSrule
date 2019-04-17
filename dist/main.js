@@ -26,9 +26,16 @@ $(".search").on("click", async function () {
 
 $("body").on("click", ".player-play ", async function () {
     let id = $(this).closest(".podcast").find(".episodeName").attr("id")
+
+    podManager.savedPlayedPod(id)
+    renderer.renderListened(podManager.listenedPodcast)
+    let pod = podManager.getCorrectPod(id)    
+    pod.audioManager.audio.play()
+
     console.log(id)
     let pod = podManager.getCorrectPod(id)    
     pod.audioManager.audio.play()
+  
     $(this).closest(".card").addClass("bounce-top")
 })
 
@@ -191,6 +198,7 @@ $(document).keypress(function (e) {
 const loadPage = async function () {
     await podManager.getDataFromDB()
     renderer.renderSaved(podManager.savedPodcast)
+    renderer.renderListened(podManager.listenedPodcast)
 }
 
 loadPage()

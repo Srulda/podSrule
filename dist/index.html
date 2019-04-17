@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="style.css">
     <title> PodsRule </title>
     <link rel="icon"
-        href="https://b.kisscc0.com/20180730/poq/kisscc0-beats-solo-2-beats-electronics-noise-cancelling-he-headphone-5b5f040a127b52.4666383515329536100757.jpg"
+        href="https://target.scene7.com/is/image/Target/GUEST_1210edeb-20d7-47f9-b2fd-16a010baad16?wid=488&hei=488&fmt=pjpeg"
         type="image/x-icon">
 
 
@@ -37,18 +37,27 @@
             </div>
         </li>
     </ul>
-    <a href="#" data-target="slide-out" class="btn-floating btn-large waves-effect waves-light red sidenav-trigger"><i class="material-icons">keyboard_arrow_left</i></a>
+    <a href="#" data-target="slide-out" class=" btn-floating btn-large waves-effect waves-light red sidenav-trigger"><i
+            id="leftArrow" class="material-icons">keyboard_arrow_left</i></a>
 
 
-    <div class="wrap">
-        <div class="nav">
-            <input type="text" class="userInput" placeholder="What are you looking for?">
-            <button class="search">
+    <div class="nav-wraper">
+        <div class="container" >
+        <div class="row">
+            <input type="text" class="userInput s6" placeholder="What are you looking for?">
+            <!-- <button class="search">
                 <i class="fa fa-search"></i>
-            </button>
+            </button> -->
         </div>
     </div>
+    </div>
 
+    <div class="first-loader">
+            <div class="bar">
+                <div class="circle-carousel"></div>
+                <p id="fatMan">Headphons On</p>
+            </div>
+        </div>
 
 
     <div class="podcasts"></div>
@@ -104,11 +113,15 @@
                         </div>
                         <div class="card-content">
                           <p class="description">{{description}}<b> read More>></b></p>
+                         
                           <div class="btns"> 
                                 <i class="fas fa-play player-play"></i>
                                 <i class="fas fa-pause player-pause"></i>        
                                 <i class="fas fa-stop player-stop"></i> 
                                 <i class="fas fa-backward"></i>
+                                <i class="fas fa-pause"></i>
+                                <i class="fas fa-stop"></i> 
+                                <i class="fas fa-play"></i>
                                 <i class="fas fa-forward"></i>
                             </div>
 
@@ -136,6 +149,11 @@
                         </div>
                     </div>
                     <div class="card-action">
+                      <i class="fas fa-backward"></i>
+                                <i class="fas fa-pause"></i> 
+                                <i class="fas fa-play"></i>
+                                <i class="fas fa-stop"></i> 
+                                <i class="fas fa-forward"></i>
                       <a><i class ="fas fa-play save-play"></i></a>
                       <a><i class="fas fa-pause save-pause"></i></a>
                       <a><i class="fas fa-stop save-stop"></i></i></a>
@@ -166,6 +184,7 @@
                       <a><i class="fas fa-pause played-pause"></i></a>
                       <a><i class="fas fa-stop played-stop"></i></i></a>
                       <a><i class="remove far fa-heart"></i></a>
+
                     </div>
                   </div>
                 </div>
@@ -175,20 +194,19 @@
     </script>
 
     <div class="loader">
-            <div class="bar">
-                    <div class="circle-carousel"></div>
-                    <p id="fatMan">Headphons On</p>
-                  </div>
-                  
+        <div class="bar">
+            <div class="circle-carousel"></div>
+            <p id="fatMan">Headphons On</p>
         </div>
-              
+    </div>
 
 
 
-    <div class="carousel"></div>
+<div class="carousel-container"> </div>
 
-    
+
     <script id="discover-podcasts-template" type="text/x-handlebars-template">
+        <div class="carousel">
         {{#each podcasts}}
         <div class="podcast">
             <p class="episodeName" id="{{id}}" data-id="{{audioLink}}"></p>
@@ -197,9 +215,10 @@
                 <i class ="fas fa-play carusela-play"></i>
             </a>
          
-        {{/each}}
         </div>
-      
+        {{/each}}
+
+    </div>
 
    
     </script>
@@ -207,7 +226,7 @@
     <script id="genre-discovery-template" type="text/x-handlebars-template">
         <div class="genres-container">
 
-        <p class="how-much-time">Pick a Genre?</p>
+        <p class="how-much-time">PICK A GENRE</p>
                 <hr class="hr-line">
         <div class="genres">
                 
@@ -226,7 +245,7 @@
     </script>
 
     <script id="language-discovery-template" type="text/x-handlebars-template">
-        <p class="how-much-time">Pick a language?</p>
+        <p class="how-much-time">PICK A LANGUAGE</p>
             <hr class="hr-line">
         <div class="languages">
             {{#each languages}}

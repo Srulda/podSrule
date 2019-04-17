@@ -12,9 +12,12 @@ $(document).ready(function () {
 const handleSearch = async function (podcastInput) {
     await podManager.getPodData(podcastInput)
     renderer.renderData(podManager.searchPodcast)
+    $(".loader").css("display", "none")
+
 }
 
 $(".search").on("click", async function () {
+    $(".loader").css("display", "block")
     handleSearch($(".userInput").val())
     $(".userInput").val("")
 })
@@ -84,6 +87,12 @@ $("body").on("click", ".save-stop", async function () {
 
 //same functions -- carusela
 
+$("body").on("click", ".time", function () {
+    let time = $(this).data().id
+    discoveryManager.time = time
+    console.log(discoveryManager._time)
+    renderer.renderLang(discoveryManager._langArray)
+    $(".time").closest("#discovery-time-container").fadeOut()
 $("body").on("click", ".carusela-play ", async function () {
     console.log("play?")
     let id = $(this).closest(".podcast").find(".episodeName").attr("id")
@@ -114,6 +123,18 @@ $("body").on("click", ".played-play ", async function () {
     pod.audioManager.audio.play()
 })
 
+$("body").on("click", ".genres", async function () {
+    let genre = $(this).attr("data-name")
+    let genreID = $(this).attr("data-id")
+    discoveryManager.genre = genre
+    discoveryManager.genreId = genreID
+    $(this).closest(".genres-container").fadeOut()
+    $(".loader").css("display", "block")
+    await discoveryManager.discoverPodcasts()
+    $(".loader").css("display", "none")
+    await discoveryManager.discoverPodcasts()
+    renderer.renderDiscovered(discoveryManager.discoveredPodcasts)
+    $('.carousel').carousel()
 $("body").on("click", ".played-pause", async function () {
     let id = $(this).closest(".row").find(".podcast").find(".episodeName").attr("id")
     let pod = podManager.getCorrectListendPod(id)
@@ -130,7 +151,6 @@ $("body").on("click", ".played-stop", function () {
 
 })
 
-    //==============================
 
     $("body").on("click", ".save", function () {
         let podId = $(this).closest(".podcast").find(".episodeName").attr("id")

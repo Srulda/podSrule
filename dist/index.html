@@ -3,6 +3,7 @@
 
 <head>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="./materialize-css/dist/css/materialize.min.css"
@@ -11,6 +12,9 @@
     <title> PodsRule </title>
     <link rel = "icon" href = "https://b.kisscc0.com/20180730/poq/kisscc0-beats-solo-2-beats-electronics-noise-cancelling-he-headphone-5b5f040a127b52.4666383515329536100757.jpg" 
     type = "image/x-icon"> 
+
+
+
 </head>
 
 <body>
@@ -45,7 +49,8 @@
     <div id="discovery-container">
 
         <div id="discovery-time-container">
-            <p>How much time do you have?</p>
+            <p class="how-much-time">How much time do you have?</p>
+            <hr class="hr-line">
             <div id="times">
                 <div class="time" data-id="15">
                     <img src="https://www.kan.org.il/images/ic_timing_15.svg">
@@ -73,24 +78,32 @@
     <script id="podcasts-template" type="text/x-handlebars-template">
         {{#each data}}
     <div class="podcast">
-            <img src="{{image}}">
-            <div class="PodName">{{PodName}} </div>
-            <div class="episodeName" id="{{id}}" data-id="{{audioLink}}">{{episodeName}} </div>
-            <p class="description">{{description}} </p>
-        
-  
-        
-        <div><i class ="fas fa-play"></i></div>        
-        <div><i class="fas fa-pause"></i></div>        
-        <div><i class="fas fa-stop"></i></div>  
-        <div><i class="fas fa-backward"></i></div>
-        <div><i class="fas fa-forward"></i></div>
-    <div>
-        <i class="save fas fa-heart"></i> 
-        <i class="remove far fa-heart"></i> 
-        </div>
-        
-    </div>
+
+            <!-- <div class="row">
+                    <div class=" col m4">  -->
+                      <div class="card">
+                        <div class="card-image">
+                          <img class="image" src="{{image}}">
+                          <span class="card-title episodeName"  id="{{id}}" data-id="{{audioLink}}">{{episodeName}}</span>
+                          <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="save far fa-heart"></i> 
+                          </a>
+                        </div>
+                        <div class="card-content">
+                          <p class="description">{{description}}<b> read More>></b></p>
+                          <div class="btns"> 
+                                <i class="fas fa-play"></i>
+                                <i class="fas fa-pause"></i>        
+                                <i class="fas fa-stop"></i> 
+                                <i class="fas fa-backward"></i>
+                                <i class="fas fa-forward"></i>
+                            </div>
+
+                        </div>
+                      </div>
+                    <!-- </div> 
+                 </div> -->
+                </div>
+
         {{/each}}
     </script>
 

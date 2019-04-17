@@ -44,7 +44,13 @@ $("body").on("click", ".fa-play",async function(){
     audioManager.stopPodcast()
 })
 
+$("body").on("click", ".fa-forward", function(){
+    audioManager.plus()
+})
 
+$("body").on("click", ".fa-backward", function(){
+    audioManager.minus()
+})
 
 $("body").on("click", ".save", function(){
 let podId = $(this).closest(".podcast").find(".episodeName").attr("id")
@@ -56,6 +62,9 @@ $("body").on("click", ".remove", function(){
     podManager.deletePod(podId)
     })
 
+$("body").on("click", ".plus", function(){
+    
+})
 
 
 

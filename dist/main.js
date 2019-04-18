@@ -137,6 +137,14 @@ $("body").on("click", ".time", function () {
 
 })
 
+$(".bootcamp").click(function () {
+    console.log("a")
+    // $("#discovery-time-container").empty()
+    $(".bootcamp").closest("#discovery-time-container").fadeOut()
+    $("#discovery-container").append('<div class="meme-container"><img class="meme" src="meme.jpg"></div>')
+})
+
+
 $("body").on("click", ".carusela-play ", async function () {
 
     let id = $(this).closest(".podcast").find(".episodeName").attr("id")

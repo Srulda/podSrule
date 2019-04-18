@@ -174,7 +174,7 @@
                     <div class="saved-pod-card card-content white-text podcast">
                         <div><img class="circle col s12" src="{{image}}"></div>
                         <div class="col s12">
-                            <span class="card-title episodeName" id="{{id}}" data-id="{{audioLink}}">{{episodeName}}</span>
+                            <span class="card-title episodeName" name-id="podName" id="{{id}}" data-id="{{audioLink}}">{{episodeName}}</span>
                             <p class="length">Duration: {{audioLength}}</p>
                         </div>
                     </div>
@@ -208,7 +208,7 @@
         <div class="carousel">
         {{#each podcasts}}
         <div class="podcast">
-            <p class="episodeName" id="{{id}}" data-id="{{audioLink}}"></p>
+            <p class="episodeName" id="{{id}}" name-id="{{podName}}" data-id="{{audioLink}}" episode-id="{{episodeName}}"></p>
             <a class="carousel-item"><img class = "car-img" src="{{image}}" >
                 <i class="fas fa-stop carusela-stop"></i>
                 <i class ="fas fa-play carusela-play"></i>
@@ -218,7 +218,9 @@
         {{/each}}
 
     </div>
-
+    <div class="startOver-btn">
+    <a class="waves-effect waves-light btn start-over">Start Over</a>
+</div>
    
     </script>
 

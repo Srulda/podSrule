@@ -28,11 +28,18 @@ $(".search").on("click", async function () {
 $("body").on("click", ".player-play ", async function () {
     let id = $(this).closest(".podcast").find(".episodeName").attr("id")
 
+    let playingId = JSON.parse(localStorage.getItem('playingPodcastId'))
+    if (playingId) {
+        let pod = podManager.getCorrectPod(playingId)
+        pod.audioManager.audio.pause()
+    }
+
+    localStorage.setItem('playingPodcastId', JSON.stringify(id))
+
     podManager.savedPlayedPod(id)
     renderer.renderListened(podManager.listenedPodcast)
     let pod = podManager.getCorrectPod(id)
     pod.audioManager.audio.play()
-
     $(this).closest(".card").addClass("bounce-top")
 })
 

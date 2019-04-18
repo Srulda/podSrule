@@ -190,9 +190,18 @@ $("body").on("click", ".save", function () {
     })
 })
 
-$("body").on("click", ".remove", function () {
-    let podId = $(this).closest(".podcast").find(".episodeName").attr("id")
-    podManager.deletePod(podId)
+$("body").on("click", ".remove-listened", async function () {
+    let podId = $(this).closest('.card-action').siblings(".podcast").find(".episodeName").attr("id")
+    
+    await podManager.deletePod(podId, "listened")
+    renderer.renderListened(podManager.listenedPodcast)
+})
+
+$("body").on("click", ".remove-saved", async function () {
+    let podId = $(this).closest('.card-action').siblings(".podcast").find(".episodeName").attr("id")
+    
+    await podManager.deletePod(podId, "saved")
+    renderer.renderSaved(podManager.savedPodcast)
 })
 
 

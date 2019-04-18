@@ -100,7 +100,6 @@ $("body").on("click", ".save-play", function () {
     renderer.renderListened(podManager.listenedPodcast)
     pauseCurrentlyPlaying()
     localStorage.setItem('playingPodcastId', JSON.stringify(id))
-
     let pod = podManager.getCorrectSavedPod(id)
     pod.audioManager.audio.play()
     $(".current").empty().append(`<i class="fas fa-headphones"></i>Now Playing ${episodeName} By ${podName}<i class="fas fa-headphones"></i>`)

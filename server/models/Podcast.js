@@ -7,7 +7,7 @@ let podcastSchema = new Schema({
     id: String,
     image: String,
     audioLink: String,
-    audioLength: Number,
+    audioLength: String,
     genres : [String],
     description: String,
     played: Boolean,

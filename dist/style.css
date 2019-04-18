@@ -96,7 +96,7 @@ body{
 
 .card-content > div > .episodeName {
     grid-area: title;
-    font-size: 0.5em;
+    font-size: 0.8em;
 }
 
 .card-content > .length {
@@ -122,7 +122,7 @@ body{
 }
 
 .card .card-content .card-title {
-    line-height: 10px;
+    line-height: 15px;
     margin-bottom: 0;
 }
 

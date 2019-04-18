@@ -19,7 +19,8 @@
 </head>
 
 <body>
-
+        <p id="demo"></p>
+<div class="current"></div>
     <ul id="slide-out" class="sidenav">
         <li>
             <div id="sidebar">
@@ -103,7 +104,7 @@
                       <div class="card">
                         <div class="card-image">
                           <img class="image" src="{{image}}">
-                          <span class="card-title episodeName"  id="{{id}}" data-id="{{audioLink}}">{{episodeName}}</span>
+                          <span class="card-title episodeName" name-id="{{podName}}" id="{{id}}" data-id="{{audioLink}}">{{episodeName}}</span>
                           <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="save material-icons">playlist_add</i> 
                           </a>
                         </div>
@@ -137,8 +138,9 @@
                         <div><img class="circle col s12" src="{{image}}"></div>
                         <div class="col s12">
                             
-                            <span class="card-title episodeName" id="{{id}}" data-id="{{audioLink}}">{{episodeName}}</span>
-                            <p class="length">Duration: {{audioLength}}</p>
+                            <span class="card-title episodeName" name-id="{{podName}}"id="{{id}}" data-id="{{audioLink}}">{{episodeName}}</span>
+                            <p class="length">{{audioLength}}</p>
+
                         </div>
                     </div>
                     <div class="card-action">

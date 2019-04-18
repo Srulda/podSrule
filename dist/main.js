@@ -57,8 +57,20 @@ $(".search").on("click", async function () {
 })
 
 
+
+
+
+
+
+
 $("body").on("click", ".player-play ", async function () {
     let id = $(this).closest(".podcast").find(".episodeName").attr("id")
+
+    let episodeName = $(this).closest(".podcast").find(".episodeName").text()
+    let podName =  $(this).closest(".podcast").find(".episodeName").attr("name-id")
+
+
+
     pauseCurrentlyPlaying("search")
     localStorage.setItem('playingPodcastId', JSON.stringify(id))
     podManager.savedPlayedPod(id)
@@ -66,6 +78,7 @@ $("body").on("click", ".player-play ", async function () {
     let pod = podManager.getCorrectPod(id)
     pod.audioManager.audio.play()
     $(this).closest(".card").addClass("bounce-top")
+    $(".current").empty().append(`Now Playing ${episodeName} By ${podName}`)
 })
 
 
@@ -83,6 +96,7 @@ $("body").on("click", ".player-stop", function () {
     let pod = podManager.getCorrectPod(id)
     pod.audioManager.audio.pause()
     pod.audioManager.audio.currentTime = 0;
+    $(".current").empty()
     resetCurrentlyPlaying()
 })
 
@@ -101,6 +115,9 @@ $("body").on("click", ".fa-backward", function () {
 //same function - savedPodcasts
 $("body").on("click", ".save-play", function () {
     let id = $(this).closest(".row").find(".podcast").find(".episodeName").attr("id")
+    let episodeName = $(this).closest(".podcast").find(".episodeName").text()
+    let podName =  $(this).closest(".podcast").find(".episodeName").attr("name-id")
+    console.log(episodeName, podName)
 
     pauseCurrentlyPlaying("save")
     localStorage.setItem('playingPodcastId', JSON.stringify(id))

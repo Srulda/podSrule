@@ -268,9 +268,9 @@ body{
 }
 
 .genre{
- margin: 50px;
+  display:grid;
+  margin: 50px;
   justify-self: center;
-
 }
 
 

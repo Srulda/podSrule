@@ -13,8 +13,9 @@ $(document).ready(function () {
 
 const handleSearch = async function (podcastInput) {
     await podManager.getPodData(podcastInput)
+    $(".progress").css("display", "none")
     renderer.renderData(podManager.searchPodcast)
-    $(".loader").css("display", "none")
+
 
 }
 
@@ -42,10 +43,7 @@ $(".search").on("click", async function () {
 
 $("body").on("click", ".player-play ", async function () {
     let id = $(this).closest(".podcast").find(".episodeName").attr("id")
-
-
     pauseCurrentlyPlaying()
-
     let episodeName = $(this).closest(".podcast").find(".episodeName").text()
     let podName = $(this).closest(".podcast").find(".episodeName").attr("name-id")
 
@@ -102,7 +100,6 @@ $("body").on("click", ".save-play", function () {
     renderer.renderListened(podManager.listenedPodcast)
     pauseCurrentlyPlaying()
     localStorage.setItem('playingPodcastId', JSON.stringify(id))
-
     let pod = podManager.getCorrectSavedPod(id)
     pod.audioManager.audio.play()
     $(".current").empty().append(`<i class="fas fa-headphones"></i>Now Playing ${episodeName} By ${podName}<i class="fas fa-headphones"></i>`)
@@ -271,9 +268,7 @@ $("body").on("click", ".genres", async function () {
     discoveryManager.genre = genre
     discoveryManager.genreId = genreID
 
-    $(".loader").css("display", "block")
     await discoveryManager.discoverPodcasts()
-    $(".loader").css("display", "none")
     $(this).closest(".genres-container").fadeOut()
     await discoveryManager.discoverPodcasts()
     renderer.renderDiscovered(discoveryManager.discoveredPodcasts)
@@ -285,6 +280,7 @@ $("body").on("click", ".genres", async function () {
 $(document).keypress(function (e) {
     var key = e.which
     if (key === 13) {
+        $(".progress").css("display", "block")
         handleSearch($(".userInput").val())
         $(".userInput").val("")
     }

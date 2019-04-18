@@ -22,6 +22,12 @@ body{
   color: #00B4CC;
 }
 
+.fa-laptop-code {
+  display: grid;
+  font-size: 63px;
+  justify-self: center;
+}
+
 #leftArrow{
   background:#00B4CC;
 }
@@ -67,7 +73,7 @@ body{
 
 #times {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
 }
 
 /* #podcast{

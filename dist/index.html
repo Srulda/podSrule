@@ -19,7 +19,8 @@
 </head>
 
 <body>
-
+        <p id="demo"></p>
+<div class="current"></div>
     <ul id="slide-out" class="sidenav">
         <li>
             <div id="sidebar">
@@ -52,18 +53,9 @@
     </div>
     </div>
 
-    <div class="first-loader">
-            <div class="bar">
-                <div class="circle-carousel"></div>
-                <p id="fatMan">Headphons On</p>
-            </div>
-        </div>
-
+  
 
     <div class="podcasts"></div>
-
-
-
 
     <div id="discovery-container">
 
@@ -102,7 +94,7 @@
 
     </div>
 
-
+  
     <script id="podcasts-template" type="text/x-handlebars-template">
         {{#each data}}
     <div class="podcast">
@@ -112,7 +104,7 @@
                       <div class="card">
                         <div class="card-image">
                           <img class="image" src="{{image}}">
-                          <span class="card-title episodeName"  id="{{id}}" data-id="{{audioLink}}">{{episodeName}}</span>
+                          <span class="card-title episodeName" name-id="{{podName}}" id="{{id}}" data-id="{{audioLink}}">{{episodeName}}</span>
                           <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="save material-icons">playlist_add</i> 
                           </a>
                         </div>
@@ -146,8 +138,9 @@
                         <div><img class="circle col s12" src="{{image}}"></div>
                         <div class="col s12">
                             
-                            <span class="card-title episodeName" id="{{id}}" data-id="{{audioLink}}">{{episodeName}}</span>
-                            <p class="length">Duration: {{audioLength}}</p>
+                            <span class="card-title episodeName" name-id="{{podName}}"id="{{id}}" data-id="{{audioLink}}">{{episodeName}}</span>
+                            <p class="length">{{audioLength}}</p>
+
                         </div>
                     </div>
                     <div class="card-action">
@@ -190,34 +183,28 @@
         {{/each}}
     </script>
 
-    <div class="loader">
-        <div class="bar">
-            <div class="circle-carousel"></div>
-            <p id="fatMan">Headphons On</p>
-        </div>
-    </div>
+   
 
+  <div class="carousel-container"> </div>
 
-
-<div class="carousel-container"> </div>
-
-
-    <script id="discover-podcasts-template" type="text/x-handlebars-template">
+      <script id="discover-podcasts-template" type="text/x-handlebars-template">
         <div class="carousel">
         {{#each podcasts}}
-        <div class="podcast">
-            <p class="episodeName" id="{{id}}" data-id="{{audioLink}}"></p>
-            <a class="carousel-item"><img class = "car-img" src="{{image}}" >
-                <i class="fas fa-stop carusela-stop"></i>
-                <i class ="fas fa-play carusela-play"></i>
+        <div class="podcast carousel-item">
+            <div class="episodeName" id="{{id}}" data-id="{{audioLink}}"></div>
+            <a><img class = "car-img" src="{{image}}" >
+                <i class = "carousel-player">
+                    <i class ="save-carousel far fa-heart"></i>
+                    <i class="fas fa-stop carusela-stop"></i>
+                    <i class ="fas fa-play carusela-play"></i> 
+
+                </i>
             </a>
          
         </div>
         {{/each}}
 
     </div>
-
-   
     </script>
 
     <script id="genre-discovery-template" type="text/x-handlebars-template">
@@ -253,6 +240,9 @@
     
     </script>
 
+    <div class="progress">
+            <div class="indeterminate"></div>
+        </div>
 
 
     <script src="./jquery/dist/jquery.js"></script>

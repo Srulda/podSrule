@@ -57,7 +57,7 @@ $("body").on("click", ".player-play ", async function () {
     let pod = podManager.getCorrectPod(id)
     pod.audioManager.audio.play()
     $(this).closest(".card").addClass("bounce-top")
-    $(".current").empty().append(`Now Playing ${episodeName} By ${podName}`)
+    $(".current").empty().append(`<i class="fas fa-headphones"></i>Now Playing ${episodeName} By ${podName}<i class="fas fa-headphones"></i>`)
 })
 
 
@@ -94,8 +94,8 @@ $("body").on("click", ".fa-backward", function () {
 //same function - savedPodcasts
 $("body").on("click", ".save-play", function () {
     let id = $(this).closest(".row").find(".podcast").find(".episodeName").attr("id")
-    let episodeName = $(this).closest(".podcast").find(".episodeName").text()
-    let podName =  $(this).closest(".podcast").find(".episodeName").attr("name-id")
+    let episodeName = $(this).closest(".row").find(".podcast").find(".episodeName").text()
+    let podName =  $(this).closest(".row").find(".podcast").find(".episodeName").attr("name-id")
     console.log(episodeName, podName)
 
     podManager.savedPlayedPod(id)
@@ -105,6 +105,8 @@ $("body").on("click", ".save-play", function () {
 
     let pod = podManager.getCorrectSavedPod(id)
     pod.audioManager.audio.play()
+    $(".current").empty().append(`<i class="fas fa-headphones"></i>Now Playing ${episodeName} By ${podName}<i class="fas fa-headphones"></i>`)
+
 })
 
 $("body").on("click", ".save-pause", async function () {
@@ -120,6 +122,7 @@ $("body").on("click", ".save-stop", async function () {
     pod.audioManager.audio.pause()
     pod.audioManager.audio.currentTime = 0
     resetCurrentlyPlaying()
+    $(".current").empty()
 })
 
 //same functions -- carusela
@@ -127,16 +130,18 @@ $("body").on("click", ".save-stop", async function () {
 $("body").on("click", ".time", function () {
     let time = $(this).data().id
     discoveryManager.time = time
-
+    console.log("try to bring lang-cont")
+    console.log(discoveryManager._langArray)
     renderer.renderLang(discoveryManager._langArray)
     $(".time").closest("#discovery-time-container").fadeOut()
 
 })
 
 $("body").on("click", ".carusela-play ", async function () {
+    
     let id = $(this).closest(".podcast").find(".episodeName").attr("id")
-
-
+    let episodeName = $(this).closest(".podcast").find(".episodeName").attr("episode-id")
+    let podName =  $(this).closest(".podcast").find(".episodeName").attr("name-id")
     pauseCurrentlyPlaying()
 
 
@@ -144,6 +149,8 @@ $("body").on("click", ".carusela-play ", async function () {
 
     let pod = discoveryManager.getCorrectDiscovery(id)
     pod.audioManager.audio.play()
+    $(".current").empty().append(`<i class="fas fa-headphones"></i>Now Playing ${episodeName} By ${podName}<i class="fas fa-headphones"></i>`)
+
 })
 
 
@@ -155,19 +162,24 @@ $("body").on("click", ".carusela-stop", function () {
     pod.audioManager.audio.pause()
     pod.audioManager.audio.currentTime = 0
     resetCurrentlyPlaying()
-
+    $(".current").empty()
 })
 
 
 ////same functions -- played
 $("body").on("click", ".played-play ", async function () {
     let id = $(this).closest(".row").find(".podcast").find(".episodeName").attr("id")
+    let episodeName = $(this).closest(".row").find(".podcast").find(".episodeName").text()
+    let podName =  $(this).closest(".row").find(".podcast").find(".episodeName").attr("name-id")
+
 
     pauseCurrentlyPlaying()
     localStorage.setItem('playingPodcastId', JSON.stringify(id))
 
     let pod = podManager.getCorrectListendPod(id)
     pod.audioManager.audio.play()
+    $(".current").empty().append(`<i class="fas fa-headphones"></i>Now Playing ${episodeName} By ${podName}<i class="fas fa-headphones"></i>`)
+
 })
 
 $("body").on("click", ".genres", async function () {
@@ -198,6 +210,8 @@ $("body").on("click", ".played-stop", function () {
     pod.audioManager.audio.pause()
     pod.audioManager.audio.currentTime = 0
     resetCurrentlyPlaying()
+    $(".current").empty()
+
 })
 
 
@@ -282,3 +296,12 @@ const loadPage = async function () {
 }
 
 loadPage()
+
+$("body").on("click", ".start-over", function(){
+    // console.log("tryAgain")
+    // // $(".time").closest("#discovery-time-container").fadeIn()
+    // $(".time").closest("#discovery-time-container").fadeIn()
+
+    // $(".carousel-container").fadeOut()
+    location.reload();
+})

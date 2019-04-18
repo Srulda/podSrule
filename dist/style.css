@@ -224,6 +224,20 @@ body{
     grid-gap:40px;
     padding: 10px;
   }
+  .languages{
+  
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-bottom: 20px;
+  }
+  .genres{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr)
+  }
+  #times {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
 }
 
 .flags{
@@ -400,6 +414,7 @@ i{
 
 @keyframes morph{
   25%{
+    
   }
   
   50%{
@@ -414,13 +429,20 @@ i{
 }
 
 .current{
-  width:50vw;
+  width:60vw;
   animation-name: morph;
   animation-duration: 10s;
+
   
   animation-iteration-count: infinite;
   
-  /* animation-direction: alternate; */
   
   animation-timing-function: linear;
+}
+
+.startOver-btn{
+display: grid;
+}
+.start-over{
+  justify-self: center;
 }

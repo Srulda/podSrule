@@ -1,6 +1,5 @@
 class AudioManager {
     constructor(link, src) {
-
         this.src = src
         this.audio = new Audio(link)
     }

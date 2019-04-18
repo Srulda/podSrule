@@ -22,6 +22,12 @@ body{
   color: #00B4CC;
 }
 
+.fa-laptop-code {
+  display: grid;
+  font-size: 63px;
+  justify-self: center;
+}
+
 #leftArrow{
   background:#00B4CC;
 }
@@ -67,7 +73,7 @@ body{
 
 #times {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
 }
 
 /* #podcast{
@@ -90,7 +96,7 @@ body{
 
 .card-content > div > .episodeName {
     grid-area: title;
-    font-size: 0.5em;
+    font-size: 0.8em;
 }
 
 .card-content > .length {
@@ -116,7 +122,7 @@ body{
 }
 
 .card .card-content .card-title {
-    line-height: 10px;
+    line-height: 15px;
     margin-bottom: 0;
 }
 

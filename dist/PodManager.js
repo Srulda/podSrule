@@ -57,7 +57,6 @@ class PodManager {
     async savePod(podID) {
         for (let pod of this.searchPodcast) {
             if (pod.id == podID) {
-                console.log('before')
                 if (pod.saved) {
                     return
                 } else if (pod.played) {
@@ -81,13 +80,11 @@ class PodManager {
                 }
             }
         }
-        console.log(this.savedPodcast)
     }
 
     savedPlayedPod(podID) {
         for (let pod of this.searchPodcast) {
             if (pod.id == podID) {
-                console.log('before')
                 if (pod.played) {
                     return
                 } else if (pod.saved) {

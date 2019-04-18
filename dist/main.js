@@ -82,6 +82,8 @@ $("body").on("click", ".fa-backward", function () {
 $("body").on("click", ".save-play", function () {
     let id = $(this).closest(".row").find(".podcast").find(".episodeName").attr("id")
 
+    podManager.savedPlayedPod(id)
+    renderer.renderListened(podManager.listenedPodcast)
     pauseCurrentlyPlaying()
     localStorage.setItem('playingPodcastId', JSON.stringify(id))
 

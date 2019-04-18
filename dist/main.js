@@ -18,35 +18,12 @@ const handleSearch = async function (podcastInput) {
 
 }
 
-const pauseCurrentlyPlaying = (fetchFrom) => {
+const pauseCurrentlyPlaying = () => {
     let playingId = JSON.parse(localStorage.getItem('playingPodcastId'))
     if (playingId) {
         let pod = podManager.getCorrectPod(playingId) || podManager.getCorrectSavedPod(playingId) || podManager.getCorrectListendPod(playingId) || discoveryManager.getCorrectDiscovery(playingId)
         pod.audioManager.audio.pause()
     }
-
-    // if(fetchFrom === "search") {
-    //     if (playingId) {
-    //         let pod = podManager.getCorrectPod(playingId)
-    //         console.log(pod)
-    //         pod.audioManager.audio.pause()
-    //     }
-    // } else if(fetchFrom === "save") {
-    //     if (playingId) {
-    //         let pod = podManager.getCorrectSavedPod(playingId)
-    //         pod.audioManager.audio.pause()
-    //     }
-    // } else if(fetchFrom === "played") {
-    //     if (playingId) {
-    //         let pod = podManager.getCorrectListendPod(playingId)
-    //         pod.audioManager.audio.pause()
-    //     }
-    // } else if(fetchFrom === "carousel") {
-    //     if (playingId) {
-    //         let pod = podManager.getCorrectDiscovery(playingId)
-    //         pod.audioManager.audio.pause()
-    //     }
-    // }
 }
 
 const resetCurrentlyPlaying = () => localStorage.removeItem('playingPodcastId')
@@ -61,7 +38,7 @@ $(".search").on("click", async function () {
 $("body").on("click", ".player-play ", async function () {
     let id = $(this).closest(".podcast").find(".episodeName").attr("id")
 
-    pauseCurrentlyPlaying("search")
+    pauseCurrentlyPlaying()
     localStorage.setItem('playingPodcastId', JSON.stringify(id))
 
     podManager.savedPlayedPod(id)
@@ -105,7 +82,7 @@ $("body").on("click", ".fa-backward", function () {
 $("body").on("click", ".save-play", function () {
     let id = $(this).closest(".row").find(".podcast").find(".episodeName").attr("id")
 
-    pauseCurrentlyPlaying("save")
+    pauseCurrentlyPlaying()
     localStorage.setItem('playingPodcastId', JSON.stringify(id))
 
     let pod = podManager.getCorrectSavedPod(id)
@@ -141,7 +118,7 @@ $("body").on("click", ".time", function () {
 $("body").on("click", ".carusela-play ", async function () {
     let id = $(this).closest(".podcast").find(".episodeName").attr("id")
 
-    pauseCurrentlyPlaying("carousel")
+    pauseCurrentlyPlaying()
     localStorage.setItem('playingPodcastId', JSON.stringify(id))
 
     let pod = discoveryManager.getCorrectDiscovery(id)
@@ -165,7 +142,7 @@ $("body").on("click", ".carusela-stop", function () {
 $("body").on("click", ".played-play ", async function () {
     let id = $(this).closest(".row").find(".podcast").find(".episodeName").attr("id")
 
-    pauseCurrentlyPlaying("played")
+    pauseCurrentlyPlaying()
     localStorage.setItem('playingPodcastId', JSON.stringify(id))
 
     let pod = podManager.getCorrectListendPod(id)

@@ -149,6 +149,11 @@ body{
 
 /* chen */
 
+
+.bootcamp {
+  display: grid;
+  justify-self: center;
+}
 .time {
     display: grid;
     justify-self: center;

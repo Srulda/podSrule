@@ -47,7 +47,7 @@ $("body").on("click", ".player-play ", async function () {
     pauseCurrentlyPlaying()
 
     let episodeName = $(this).closest(".podcast").find(".episodeName").text()
-    let podName =  $(this).closest(".podcast").find(".episodeName").attr("name-id")
+    let podName = $(this).closest(".podcast").find(".episodeName").attr("name-id")
 
 
 
@@ -95,7 +95,7 @@ $("body").on("click", ".fa-backward", function () {
 $("body").on("click", ".save-play", function () {
     let id = $(this).closest(".row").find(".podcast").find(".episodeName").attr("id")
     let episodeName = $(this).closest(".row").find(".podcast").find(".episodeName").text()
-    let podName =  $(this).closest(".row").find(".podcast").find(".episodeName").attr("name-id")
+    let podName = $(this).closest(".row").find(".podcast").find(".episodeName").attr("name-id")
     console.log(episodeName, podName)
 
     podManager.savedPlayedPod(id)
@@ -138,10 +138,10 @@ $("body").on("click", ".time", function () {
 })
 
 $("body").on("click", ".carusela-play ", async function () {
-    
+
     let id = $(this).closest(".podcast").find(".episodeName").attr("id")
     let episodeName = $(this).closest(".podcast").find(".episodeName").attr("episode-id")
-    let podName =  $(this).closest(".podcast").find(".episodeName").attr("name-id")
+    let podName = $(this).closest(".podcast").find(".episodeName").attr("name-id")
     pauseCurrentlyPlaying()
 
 
@@ -170,7 +170,7 @@ $("body").on("click", ".carusela-stop", function () {
 $("body").on("click", ".played-play ", async function () {
     let id = $(this).closest(".row").find(".podcast").find(".episodeName").attr("id")
     let episodeName = $(this).closest(".row").find(".podcast").find(".episodeName").text()
-    let podName =  $(this).closest(".row").find(".podcast").find(".episodeName").attr("name-id")
+    let podName = $(this).closest(".row").find(".podcast").find(".episodeName").attr("name-id")
 
 
     pauseCurrentlyPlaying()
@@ -227,16 +227,18 @@ $("body").on("click", ".save", function () {
 
 $("body").on("click", ".remove-listened", async function () {
     let podId = $(this).closest('.card-action').siblings(".podcast").find(".episodeName").attr("id")
-    
+
     await podManager.deletePod(podId, "listened")
     renderer.renderListened(podManager.listenedPodcast)
 })
 
 $("body").on("click", ".remove-saved", async function () {
     let podId = $(this).closest('.card-action').siblings(".podcast").find(".episodeName").attr("id")
-    
+
     await podManager.deletePod(podId, "saved")
     renderer.renderSaved(podManager.savedPodcast)
+
+})
 
 $("body").on("click", ".save-carousel", async function () {
     let podId = $(this).closest(".carousel").find(".episodeName").attr("id")
@@ -297,7 +299,7 @@ const loadPage = async function () {
 
 loadPage()
 
-$("body").on("click", ".start-over", function(){
+$("body").on("click", ".start-over", function () {
     // console.log("tryAgain")
     // // $(".time").closest("#discovery-time-container").fadeIn()
     // $(".time").closest("#discovery-time-container").fadeIn()

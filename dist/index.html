@@ -15,7 +15,6 @@
         type="image/x-icon">
 
 
-
 </head>
 
 <body>
@@ -41,7 +40,6 @@
     <a href="#" data-target="slide-out" class=" btn-floating btn-large waves-effect waves-light red sidenav-trigger"><i
             id="leftArrow" class="material-icons">keyboard_arrow_left</i></a>
 
-
     <div class="nav-wraper">
         <div class="container" >
         <div class="row">
@@ -63,10 +61,10 @@
             <p class="how-much-time">WHERE DID WE CATCH YOU?</p>
             <hr class="hr-line">
             <div id="times">
-                <div class="time" data-id="0">
+                <div class="bootcamp" data-id="0">
                     <i class="fas fa-laptop-code"></i>
                     <p>CODING BOOTCAMP</p>
-                    <p>(no time for anything!)</p>
+                    <p>(No Time For Anything!)</p>
                 </div>
                 <div class="time" data-id="15">
                     <img src="https://www.kan.org.il/images/ic_timing_15.svg">
@@ -192,7 +190,7 @@
         {{#each podcasts}}
 
         <div class="podcast carousel-item">
-            <div class="episodeName" id="{{id}}" data-id="{{audioLink}}" name-id="{{podName}}" episode-id="{{episodeName}}></div>
+            <div class="episodeName" id="{{id}}" data-id="{{audioLink}}" name-id="{{podName}}" episode-id={{episodeName}}></div>
             <a><img class = "car-img" src="{{image}}" >
                 <i class = "carousel-player">
                     <i class ="save-carousel far fa-heart"></i>

@@ -1,7 +1,6 @@
 class Renderer {
 
     renderLang(languages) {
-
         let source = $("#language-discovery-template").html()
         let template = Handlebars.compile(source)
         let newHTML = template({ languages })
@@ -25,7 +24,7 @@ class Renderer {
         let template = Handlebars.compile(source)
         let newHTML = template({ podcasts })
         
-        $(".carousel").empty().append(newHTML)
+        $(".carousel-container").empty().append(newHTML)
     }
 
     renderSaved(podcasts) {

@@ -2,38 +2,64 @@ body{
   background: #f2f2f2;
   font-family: 'Open Sans', sans-serif;
 }
+.nav-wraper{
+  margin-top: 10%;
 
-.nav {
-  width: 100%;
+}
+
+.row {
   position: relative;
-  display: flex;
 }
 
 .userInput {
-  width: 100%;
+  width: 70%;
   border: 3px solid #00B4CC;
   border-right: none;
   padding: 5px;
   height: 20px;
   border-radius: 5px 0 0 5px;
   outline: none;
-  color: #9DBFAF;
+  color: #00B4CC;
 }
 
+.fa-laptop-code {
+  display: grid;
+  font-size: 63px;
+  justify-self: center;
+}
+
+#leftArrow{
+  background:#00B4CC;
+}
+.material-icons{
+  background: #F44336;
+}
 .userInput:focus{
   color: #00B4CC;
 }
 
 .search {
-  width: 40px;
+  width: 150px;
   height: 36px;
-  border: 1px solid #00B4CC;
-  background: #00B4CC;
+  margin-left: 42%;
+  border: 1.5px solid #00B4CC;
+  background: #f2f2f2 ;
   text-align: center;
-  color: #fff;
-  border-radius: 0 5px 5px 0;
+  color: black;
+  border-radius: 5px;
   cursor: pointer;
   font-size: 20px;
+}
+#discovery-time-container{
+  margin-top: 15%;
+}
+.how-much-time{
+  margin-top: 15%;
+}
+
+.bar{
+  margin-top: 15%;
+
 }
 
 /*Resize the wrap to see the search bar change!*/
@@ -47,7 +73,7 @@ body{
 
 #times {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
 }
 
 /* #podcast{
@@ -70,7 +96,7 @@ body{
 
 .card-content > div > .episodeName {
     grid-area: title;
-    font-size: 0.5em;
+    font-size: 0.8em;
 }
 
 .card-content > .length {
@@ -96,7 +122,7 @@ body{
 }
 
 .card .card-content .card-title {
-    line-height: 10px;
+    line-height: 15px;
     margin-bottom: 0;
 }
 
@@ -148,11 +174,16 @@ body{
 }
 
 .hr-line{
-  border: 1px solid black;
-  width:110px;
-  margin-top:-40px;
-  margin-bottom:40px;;
+    width:25%;
+    margin-top:-40px;
+    margin-bottom:40px;;
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+
 }
+
+
 .card-content{
   display: grid;
 
@@ -256,6 +287,9 @@ height: 140%;
   display: none;
 }
 
+.first-loader{
+  display: none;
+}
 
 
 .bar {
@@ -263,7 +297,7 @@ height: 140%;
   height: 2px;
   width: 500px;
   margin: 0 auto;
-  background: #fff;
+  background: #00B4CC;
   margin-top: 150px;
 }
 
@@ -274,7 +308,7 @@ height: 140%;
   height: 60px;
   width: 60px;
   left: 0;
-  background: #fff;
+  background: #00B4CC;
   border-radius: 30%;
   -webkit-animation: move 5s infinite;
 }

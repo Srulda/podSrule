@@ -21,7 +21,7 @@ const handleSearch = async function (podcastInput) {
 const pauseCurrentlyPlaying = (fetchFrom) => {
     let playingId = JSON.parse(localStorage.getItem('playingPodcastId'))
     if (playingId) {
-        let pod = podManager.getCorrectPod(playingId) || podManager.getCorrectSavedPod(playingId) || podManager.getCorrectListendPod(playingId) || podManager.getCorrectDiscovery(playingId)
+        let pod = podManager.getCorrectPod(playingId) || podManager.getCorrectSavedPod(playingId) || podManager.getCorrectListendPod(playingId) || discoveryManager.getCorrectDiscovery(playingId)
         pod.audioManager.audio.pause()
     }
 

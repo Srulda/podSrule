@@ -52,7 +52,6 @@ const pauseCurrentlyPlaying = (fetchFrom) => {
 const resetCurrentlyPlaying = () => localStorage.removeItem('playingPodcastId')
 
 $(".search").on("click", async function () {
-    $(".loader").css("display", "block")
     handleSearch($(".userInput").val())
     $(".userInput").val("")
 })
@@ -66,14 +65,14 @@ $(".search").on("click", async function () {
 
 $("body").on("click", ".player-play ", async function () {
     let id = $(this).closest(".podcast").find(".episodeName").attr("id")
+
     let episodeName = $(this).closest(".podcast").find(".episodeName").text()
     let podName =  $(this).closest(".podcast").find(".episodeName").attr("name-id")
 
 
-    console.log(podName)
+
     pauseCurrentlyPlaying("search")
     localStorage.setItem('playingPodcastId', JSON.stringify(id))
-
     podManager.savedPlayedPod(id)
     renderer.renderListened(podManager.listenedPodcast)
     let pod = podManager.getCorrectPod(id)
@@ -155,7 +154,7 @@ $("body").on("click", ".time", function () {
 
 $("body").on("click", ".carusela-play ", async function () {
     let id = $(this).closest(".podcast").find(".episodeName").attr("id")
-
+    console.log(id)
     pauseCurrentlyPlaying("carousel")
     localStorage.setItem('playingPodcastId', JSON.stringify(id))
 
@@ -193,10 +192,9 @@ $("body").on("click", ".genres", async function () {
     discoveryManager.genre = genre
     discoveryManager.genreId = genreID
     $(this).closest(".genres-container").fadeOut()
-    $(".loader").css("display", "block")
+    $(".progress").css("display", "block")
     await discoveryManager.discoverPodcasts()
-    $(".loader").css("display", "none")
-    await discoveryManager.discoverPodcasts()
+    $(".progress").css("display", "none")
     renderer.renderDiscovered(discoveryManager.discoveredPodcasts)
     $('.carousel').carousel()
 
@@ -227,6 +225,17 @@ $("body").on("click", ".save", function () {
         html: 'Added to favorites!'
     })
 })
+
+$("body").on("click", ".save-carousel", async function () {
+    let podId = $(this).closest(".carousel").find(".episodeName").attr("id")
+    console.log(podId)
+    await podManager.savePod(podId)
+    renderer.renderSaved(podManager.savedPodcast)
+    M.toast({
+        html: 'Added to favorites!'
+    })
+})
+
 
 $("body").on("click", ".remove", function () {
     let podId = $(this).closest(".podcast").find(".episodeName").attr("id")

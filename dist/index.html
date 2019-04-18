@@ -52,18 +52,9 @@
     </div>
     </div>
 
-    <div class="first-loader">
-            <div class="bar">
-                <div class="circle-carousel"></div>
-                <p id="fatMan">Headphons On</p>
-            </div>
-        </div>
-
+  
 
     <div class="podcasts"></div>
-
-
-
 
     <div id="discovery-container">
 
@@ -102,7 +93,7 @@
 
     </div>
 
-
+  
     <script id="podcasts-template" type="text/x-handlebars-template">
         {{#each data}}
     <div class="podcast">
@@ -190,34 +181,28 @@
         {{/each}}
     </script>
 
-    <div class="loader">
-        <div class="bar">
-            <div class="circle-carousel"></div>
-            <p id="fatMan">Headphons On</p>
-        </div>
-    </div>
+   
 
+  <div class="carousel-container"> </div>
 
-
-<div class="carousel-container"> </div>
-
-
-    <script id="discover-podcasts-template" type="text/x-handlebars-template">
+      <script id="discover-podcasts-template" type="text/x-handlebars-template">
         <div class="carousel">
         {{#each podcasts}}
-        <div class="podcast">
-            <p class="episodeName" id="{{id}}" data-id="{{audioLink}}"></p>
-            <a class="carousel-item"><img class = "car-img" src="{{image}}" >
-                <i class="fas fa-stop carusela-stop"></i>
-                <i class ="fas fa-play carusela-play"></i>
+        <div class="podcast carousel-item">
+            <div class="episodeName" id="{{id}}" data-id="{{audioLink}}"></div>
+            <a><img class = "car-img" src="{{image}}" >
+                <i class = "carousel-player">
+                    <i class ="save-carousel far fa-heart"></i>
+                    <i class="fas fa-stop carusela-stop"></i>
+                    <i class ="fas fa-play carusela-play"></i> 
+
+                </i>
             </a>
          
         </div>
         {{/each}}
 
     </div>
-
-   
     </script>
 
     <script id="genre-discovery-template" type="text/x-handlebars-template">
@@ -253,6 +238,9 @@
     
     </script>
 
+    <div class="progress">
+            <div class="indeterminate"></div>
+        </div>
 
 
     <script src="./jquery/dist/jquery.js"></script>

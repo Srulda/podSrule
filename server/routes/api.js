@@ -78,7 +78,7 @@ router.get('/podcast/:podcastName', async function (req, res) {
     await request(options, async function (error, response, body) {
         let podcastsRec = JSON.parse(body).results
 
-        for (let i = 0; i < 6; i++) {
+        for (let i = 0; i < 9; i++) {
             let podcast = await createPodcastDocument(
                 podcastsRec[i].podcast_title_original, podcastsRec[i].title_original,
                 podcastsRec[i].id, podcastsRec[i].image, podcastsRec[i].audio,

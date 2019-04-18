@@ -49,14 +49,7 @@ class DiscoveryManager {
     }
 
     async discoverPodcasts() {
-        console.log(this._time)
-        console.log(this._lang)
-        console.log(this._genre)
-        console.log(this._genreId)
-
         this._discoveredPodcasts = await $.get(`/discover/${this._time}/${this._lang}/${this._genre}/${this._genreId}`)
-        console.log(this._discoveredPodcasts)
-
         for(let pod of this._discoveredPodcasts){
             pod.audioManager = new AudioManager(pod.audioLink, pod.audioLink)
         }

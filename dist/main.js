@@ -18,41 +18,17 @@ const handleSearch = async function (podcastInput) {
 
 }
 
-const pauseCurrentlyPlaying = (fetchFrom) => {
+const pauseCurrentlyPlaying = () => {
     let playingId = JSON.parse(localStorage.getItem('playingPodcastId'))
     if (playingId) {
         let pod = podManager.getCorrectPod(playingId) || podManager.getCorrectSavedPod(playingId) || podManager.getCorrectListendPod(playingId) || discoveryManager.getCorrectDiscovery(playingId)
         pod.audioManager.audio.pause()
     }
-
-    // if(fetchFrom === "search") {
-    //     if (playingId) {
-    //         let pod = podManager.getCorrectPod(playingId)
-    //         console.log(pod)
-    //         pod.audioManager.audio.pause()
-    //     }
-    // } else if(fetchFrom === "save") {
-    //     if (playingId) {
-    //         let pod = podManager.getCorrectSavedPod(playingId)
-    //         pod.audioManager.audio.pause()
-    //     }
-    // } else if(fetchFrom === "played") {
-    //     if (playingId) {
-    //         let pod = podManager.getCorrectListendPod(playingId)
-    //         pod.audioManager.audio.pause()
-    //     }
-    // } else if(fetchFrom === "carousel") {
-    //     if (playingId) {
-    //         let pod = podManager.getCorrectDiscovery(playingId)
-    //         pod.audioManager.audio.pause()
-    //     }
-    // }
 }
 
 const resetCurrentlyPlaying = () => localStorage.removeItem('playingPodcastId')
 
 $(".search").on("click", async function () {
-    $(".loader").css("display", "block")
     handleSearch($(".userInput").val())
     $(".userInput").val("")
 })
@@ -66,14 +42,16 @@ $(".search").on("click", async function () {
 
 $("body").on("click", ".player-play ", async function () {
     let id = $(this).closest(".podcast").find(".episodeName").attr("id")
+
+
+    pauseCurrentlyPlaying()
+
     let episodeName = $(this).closest(".podcast").find(".episodeName").text()
     let podName =  $(this).closest(".podcast").find(".episodeName").attr("name-id")
 
 
-    console.log(podName)
-    pauseCurrentlyPlaying("search")
-    localStorage.setItem('playingPodcastId', JSON.stringify(id))
 
+    localStorage.setItem('playingPodcastId', JSON.stringify(id))
     podManager.savedPlayedPod(id)
     renderer.renderListened(podManager.listenedPodcast)
     let pod = podManager.getCorrectPod(id)
@@ -120,7 +98,9 @@ $("body").on("click", ".save-play", function () {
     let podName =  $(this).closest(".row").find(".podcast").find(".episodeName").attr("name-id")
     console.log(episodeName, podName)
 
-    pauseCurrentlyPlaying("save")
+    podManager.savedPlayedPod(id)
+    renderer.renderListened(podManager.listenedPodcast)
+    pauseCurrentlyPlaying()
     localStorage.setItem('playingPodcastId', JSON.stringify(id))
 
     let pod = podManager.getCorrectSavedPod(id)
@@ -162,8 +142,9 @@ $("body").on("click", ".carusela-play ", async function () {
     let id = $(this).closest(".podcast").find(".episodeName").attr("id")
     let episodeName = $(this).closest(".podcast").find(".episodeName").attr("episode-id")
     let podName =  $(this).closest(".podcast").find(".episodeName").attr("name-id")
-    console.log(episodeName)
-    pauseCurrentlyPlaying("carousel")
+    pauseCurrentlyPlaying()
+
+
     localStorage.setItem('playingPodcastId', JSON.stringify(id))
 
     let pod = discoveryManager.getCorrectDiscovery(id)
@@ -190,7 +171,9 @@ $("body").on("click", ".played-play ", async function () {
     let id = $(this).closest(".row").find(".podcast").find(".episodeName").attr("id")
     let episodeName = $(this).closest(".row").find(".podcast").find(".episodeName").text()
     let podName =  $(this).closest(".row").find(".podcast").find(".episodeName").attr("name-id")
-    pauseCurrentlyPlaying("played")
+
+
+    pauseCurrentlyPlaying()
     localStorage.setItem('playingPodcastId', JSON.stringify(id))
 
     let pod = podManager.getCorrectListendPod(id)
@@ -205,10 +188,9 @@ $("body").on("click", ".genres", async function () {
     discoveryManager.genre = genre
     discoveryManager.genreId = genreID
     $(this).closest(".genres-container").fadeOut()
-    $(".loader").css("display", "block")
+    $(".progress").css("display", "block")
     await discoveryManager.discoverPodcasts()
-    $(".loader").css("display", "none")
-    await discoveryManager.discoverPodcasts()
+    $(".progress").css("display", "none")
     renderer.renderDiscovered(discoveryManager.discoveredPodcasts)
     $('.carousel').carousel()
 
@@ -242,9 +224,35 @@ $("body").on("click", ".save", function () {
     })
 })
 
+
+$("body").on("click", ".remove-listened", async function () {
+    let podId = $(this).closest('.card-action').siblings(".podcast").find(".episodeName").attr("id")
+    
+    await podManager.deletePod(podId, "listened")
+    renderer.renderListened(podManager.listenedPodcast)
+})
+
+$("body").on("click", ".remove-saved", async function () {
+    let podId = $(this).closest('.card-action').siblings(".podcast").find(".episodeName").attr("id")
+    
+    await podManager.deletePod(podId, "saved")
+    renderer.renderSaved(podManager.savedPodcast)
+
+$("body").on("click", ".save-carousel", async function () {
+    let podId = $(this).closest(".carousel").find(".episodeName").attr("id")
+    console.log(podId)
+    await podManager.savePod(podId)
+    renderer.renderSaved(podManager.savedPodcast)
+    M.toast({
+        html: 'Added to favorites!'
+    })
+})
+
+
 $("body").on("click", ".remove", function () {
     let podId = $(this).closest(".podcast").find(".episodeName").attr("id")
     podManager.deletePod(podId)
+
 })
 
 

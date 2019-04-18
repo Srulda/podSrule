@@ -29,7 +29,7 @@ body{
 }
 
 #leftArrow{
-  background:#00B4CC;
+  background: rgb(84, 110, 122);
 }
 .material-icons{
   background: #F44336;
@@ -51,14 +51,14 @@ body{
   font-size: 20px;
 }
 #discovery-time-container{
-  margin-top: 15%;
+  margin-top: 10%;
 }
 .how-much-time{
-  margin-top: 15%;
+  margin-top: 10%;
 }
 
 .bar{
-  margin-top: 15%;
+  margin-top: 10%;
 
 }
 
@@ -290,21 +290,21 @@ width: 140%;
 height: 140%;
 }
 
-
+.progress{
+  display: none;
+  margin-top: 40%;
+  width: 70%;
+  margin-left: 15%;
+}
 
 
 .carousel .carousel-item > img {
   width: 150%;
 }
 
-.loader{
-  display: none;
+.carousel-player{
+  margin-left: 51%;
 }
-
-.first-loader{
-  display: none;
-}
-
 
 .bar {
   position: relative;
